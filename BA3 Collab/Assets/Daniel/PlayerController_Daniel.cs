@@ -9,6 +9,7 @@ public class PlayerController_Daniel : MonoBehaviour
     
     Vector2 move;
     public Vector3 velocity;
+    public float walkSpeed;
     float gravity = -9.81f;
     public bool isGrounded;
     public bool rightHandGrab;
@@ -26,7 +27,8 @@ public class PlayerController_Daniel : MonoBehaviour
     Rigidbody leftHand;
     Rigidbody hipsr;
     GameObject empty;
-    
+    bool walk;
+    public Animator targetAnimator;
 
     void Awake()
     {
@@ -38,8 +40,8 @@ public class PlayerController_Daniel : MonoBehaviour
         leftHand = GameObject.Find("Lowerarm.L").GetComponent<Rigidbody>();
         rightHand = GameObject.Find("Lowerarm.R").GetComponent<Rigidbody>();
 
-        control.Movement.Walk.performed += ctx => move = ctx.ReadValue<Vector2>();
-        control.Movement.Walk.canceled += ctx => move = Vector2.zero;
+        
+        //control.Movement.Walk.canceled += ctx => move = Vector2.zero;
         control.Movement.Jump.performed += ctx => Jump();
         control.Movement.Grab.performed += ctx => Grab();
         control.Movement.Grab.canceled += ctx => UnGrab();
@@ -63,14 +65,14 @@ public class PlayerController_Daniel : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt((2f * -2f * gravity));
             isGrounded = false;
-            hipsr.AddForce(new Vector3(0,600,0));
+            hipsr.AddForce(new Vector3(0,60000,0));
         }
 
     }
     void Grab()
     {
 
-        rightHandGrab = Physics.CheckSphere(righthandpos.transform.position, 0.2f, objects);
+        rightHandGrab = Physics.CheckSphere(righthandpos.transform.position, 0.5f, objects);
         if (rightHandGrab==true)
         {
             Collider[] r_colliders = Physics.OverlapSphere(righthandpos.transform.position, 0.5f, objects);
@@ -127,15 +129,30 @@ public class PlayerController_Daniel : MonoBehaviour
 
     }
 
+    public void onWalk(InputAction.CallbackContext value)
+    {
+        move = value.ReadValue<Vector2>();
+                
+    }
+
+
     // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundC.transform.position, 0.4f, ground);
 
         Vector3 direction = new Vector3(move.x, 0f, move.y);
-
-        //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        //hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
-        hipsr.AddForce(direction * 20);
+        if (direction.magnitude >=0.1f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
+            hipsr.AddForce(direction * walkSpeed *Time.deltaTime);
+            walk = true;
+        }
+        else
+        {
+            walk = false;
+        }
+        targetAnimator.SetBool("Walk", walk);
     }
 }
