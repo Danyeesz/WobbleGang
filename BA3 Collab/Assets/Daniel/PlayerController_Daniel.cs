@@ -22,13 +22,14 @@ public class PlayerController_Daniel : MonoBehaviour
     Transform armature;
     Transform hips;
     public Transform righthandpos;
-    public Transform lefthandpos;
-    Rigidbody rightHand;
-    Rigidbody leftHand;
+    Rigidbody spine;
     Rigidbody hipsr;
-    GameObject empty;
     bool walk;
     public Animator targetAnimator;
+    public Rigidbody L_lower;
+    public Rigidbody R_lower;
+    public Rigidbody R_upper;
+    public Rigidbody L_upper;
 
     void Awake()
     {
@@ -37,8 +38,7 @@ public class PlayerController_Daniel : MonoBehaviour
         hips = armature.GetChild(0);
         hipsr = hips.GetComponent<Rigidbody>();
 
-        leftHand = GameObject.Find("Lowerarm.L").GetComponent<Rigidbody>();
-        rightHand = GameObject.Find("Lowerarm.R").GetComponent<Rigidbody>();
+        spine = GameObject.Find("Spine.002").GetComponent<Rigidbody>();
 
         
         //control.Movement.Walk.canceled += ctx => move = Vector2.zero;
@@ -64,8 +64,8 @@ public class PlayerController_Daniel : MonoBehaviour
         if (isGrounded == true)
         {
             velocity.y = Mathf.Sqrt((2f * -2f * gravity));
-            isGrounded = false;
             hipsr.AddForce(new Vector3(0,60000,0));
+            isGrounded = false;
         }
 
     }
@@ -80,23 +80,16 @@ public class PlayerController_Daniel : MonoBehaviour
             {
                 
                 coll.gameObject.AddComponent<FixedJoint>();
-                coll.GetComponent<FixedJoint>().connectedBody = rightHand;
-
+                coll.transform.position = righthandpos.position;
+                coll.GetComponent<FixedJoint>().connectedBody = spine;
+                R_upper.GetComponent<ConfigurableJoint>().targetPosition = new Vector3(-0.000289999996f, 0.0080500003f, -0.00178000005f);
+                R_lower.GetComponent<ConfigurableJoint>().targetPosition = new Vector3(-0.000290740631f, 0.0065510734f, 0.000842375215f);
+                R_lower.GetComponent<CopyLimb>().enabled = false;
+                R_upper.GetComponent<CopyLimb>().enabled = false;
             }
          
         }
-        leftHandGrab = Physics.CheckSphere(lefthandpos.transform.position, 0.5f, objects);
-        if (leftHandGrab == true)
-        {
-            Collider[] r_colliders = Physics.OverlapSphere(lefthandpos.transform.position, 0.5f, objects);
-            foreach (Collider coll in r_colliders)
-            {
-
-                coll.gameObject.AddComponent<FixedJoint>();
-                coll.GetComponent<FixedJoint>().connectedBody = leftHand;
-
-            }
-        }
+       
 
     }
 
@@ -110,23 +103,13 @@ public class PlayerController_Daniel : MonoBehaviour
             {
 
                 Destroy(coll.GetComponent<FixedJoint>());
+                R_lower.GetComponent<CopyLimb>().enabled = false;
+                R_upper.GetComponent<CopyLimb>().enabled = false;
 
             }
 
         }
-        leftHandGrab = Physics.CheckSphere(lefthandpos.transform.position, 0.5f, objects);
-        if (leftHandGrab == true)
-        {
-            Collider[] r_colliders = Physics.OverlapSphere(lefthandpos.transform.position, 0.5f, objects);
-            foreach (Collider coll in r_colliders)
-            {
-
-                Destroy(coll.GetComponent<FixedJoint>());
-
-            }
-        }
-
-
+       
     }
 
     public void onWalk(InputAction.CallbackContext value)
