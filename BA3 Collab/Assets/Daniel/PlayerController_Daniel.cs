@@ -25,7 +25,6 @@ public class PlayerController_Daniel : MonoBehaviour
     Rigidbody rightHand;
     Rigidbody leftHand;
     Rigidbody hipsr;
-    Rigidbody spine;
     GameObject empty;
     
 
@@ -36,13 +35,14 @@ public class PlayerController_Daniel : MonoBehaviour
         hips = armature.GetChild(0);
         hipsr = hips.GetComponent<Rigidbody>();
 
-
         leftHand = GameObject.Find("Lowerarm.L").GetComponent<Rigidbody>();
         rightHand = GameObject.Find("Lowerarm.R").GetComponent<Rigidbody>();
 
-      
-
-        spine = GameObject.Find("Spine.002").GetComponent<Rigidbody>();
+        control.Movement.Walk.performed += ctx => move = ctx.ReadValue<Vector2>();
+        control.Movement.Walk.canceled += ctx => move = Vector2.zero;
+        control.Movement.Jump.performed += ctx => Jump();
+        control.Movement.Grab.performed += ctx => Grab();
+        control.Movement.Grab.canceled += ctx => UnGrab();
         
     }
 
@@ -56,19 +56,18 @@ public class PlayerController_Daniel : MonoBehaviour
         control.Movement.Disable();
     }
 
-    public void Jump(InputAction.CallbackContext value) 
+    void Jump() 
     {
 
         if (isGrounded == true)
         {
             velocity.y = Mathf.Sqrt((2f * -2f * gravity));
-            hipsr.AddForce(new Vector3(0,600,0));
             isGrounded = false;
-            
+            hipsr.AddForce(new Vector3(0,600,0));
         }
 
     }
-    public void Grab(InputAction.CallbackContext value)
+    void Grab()
     {
 
         rightHandGrab = Physics.CheckSphere(righthandpos.transform.position, 0.2f, objects);
@@ -93,21 +92,12 @@ public class PlayerController_Daniel : MonoBehaviour
 
                 coll.gameObject.AddComponent<FixedJoint>();
                 coll.GetComponent<FixedJoint>().connectedBody = leftHand;
-                coll.transform.position = righthandpos.position;
-                coll.GetComponent<FixedJoint>().connectedBody = spine;
-                //R_upper.GetComponent<ConfigurableJoint>().targetPosition = new Vector3(-0.000289999996f, 0.0080500003f, -0.00178000005f);
-               
 
             }
-               
-            }
-        if (value.canceled)
-        {
-            UnGrab();
-            Debug.Log("ELENGEDVE");
         }
+
     }
-      
+
     void UnGrab() 
     {
         rightHandGrab = Physics.CheckSphere(righthandpos.transform.position, 0.5f, objects);
@@ -116,14 +106,12 @@ public class PlayerController_Daniel : MonoBehaviour
             Collider[] r_colliders = Physics.OverlapSphere(righthandpos.transform.position, 0.5f, objects);
             foreach (Collider coll in r_colliders)
             {
-                Destroy(coll.GetComponent<FixedJoint>());
-                rightHandGrab = false;
 
+                Destroy(coll.GetComponent<FixedJoint>());
 
             }
 
         }
-        
         leftHandGrab = Physics.CheckSphere(lefthandpos.transform.position, 0.5f, objects);
         if (leftHandGrab == true)
         {
@@ -138,17 +126,8 @@ public class PlayerController_Daniel : MonoBehaviour
 
 
     }
-    public void onWalk(InputAction.CallbackContext value)
-    {
-        move = value.ReadValue<Vector2>();
-        if (value.canceled)
-        {
-            move = Vector2.zero;
-        }
-        
-                
-    }
 
+    // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundC.transform.position, 0.4f, ground);
