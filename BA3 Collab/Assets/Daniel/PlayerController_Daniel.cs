@@ -61,8 +61,8 @@ public class PlayerController_Daniel : MonoBehaviour
 
         if (isGrounded == true)
         {
-            //velocity.y = Mathf.Sqrt((2f * -2f * gravity));
-            hipsr.AddForce(new Vector3(0,60,0));
+            velocity.y = Mathf.Sqrt((2f * -2f * gravity));
+            hipsr.AddForce(new Vector3(0,600,0));
             isGrounded = false;
             
         }
@@ -151,7 +151,7 @@ public class PlayerController_Daniel : MonoBehaviour
 
     void Update()
     {
-        //isGrounded = Physics.CheckSphere(groundC.transform.position, 0.4f, ground);
+        isGrounded = Physics.CheckSphere(groundC.transform.position, 0.4f, ground);
 
         Vector3 direction = new Vector3(move.x, 0f, move.y);
 
