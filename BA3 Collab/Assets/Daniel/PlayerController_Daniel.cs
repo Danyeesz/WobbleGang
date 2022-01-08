@@ -26,6 +26,8 @@ public class PlayerController_Daniel : MonoBehaviour
     Rigidbody leftHand;
     Rigidbody hipsr;
     GameObject empty;
+    public Animator targetAnimator;
+    bool walk = false;
     
 
     void Awake()
@@ -38,8 +40,6 @@ public class PlayerController_Daniel : MonoBehaviour
         leftHand = GameObject.Find("Lowerarm.L").GetComponent<Rigidbody>();
         rightHand = GameObject.Find("Lowerarm.R").GetComponent<Rigidbody>();
 
-        control.Movement.Walk.performed += ctx => move = ctx.ReadValue<Vector2>();
-        control.Movement.Walk.canceled += ctx => move = Vector2.zero;
         control.Movement.Jump.performed += ctx => Jump();
         control.Movement.Grab.performed += ctx => Grab();
         control.Movement.Grab.canceled += ctx => UnGrab();
@@ -54,6 +54,22 @@ public class PlayerController_Daniel : MonoBehaviour
     private void OnDisable()
     {
         control.Movement.Disable();
+    }
+
+    public void Walk(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            move = value.ReadValue<Vector2>();
+            
+
+        }
+        else if (value.canceled)
+        {
+            move = Vector2.zero;
+            
+        }
+
     }
 
     void Jump() 
@@ -133,9 +149,17 @@ public class PlayerController_Daniel : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundC.transform.position, 0.4f, ground);
 
         Vector3 direction = new Vector3(move.x, 0f, move.y);
-
-        //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        //hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
-        hipsr.AddForce(direction * 20);
+        if (direction.magnitude >= 0.1f) { 
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
+            hipsr.AddForce(direction * 20);
+            walk = true;
+        }
+        else
+        {
+            walk = false;
+        }
+     
+        targetAnimator.SetBool("Walk", walk);
     }
 }
