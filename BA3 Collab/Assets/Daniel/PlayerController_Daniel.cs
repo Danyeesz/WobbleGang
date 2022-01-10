@@ -30,6 +30,8 @@ public class PlayerController_Daniel : MonoBehaviour
     bool walk = false;
     
 
+ 
+
     void Awake()
     {
         control = new PlayerControls();
@@ -143,6 +145,7 @@ public class PlayerController_Daniel : MonoBehaviour
 
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -159,7 +162,6 @@ public class PlayerController_Daniel : MonoBehaviour
         {
             walk = false;
         }
-     
         targetAnimator.SetBool("Walk", walk);
     }
 }
