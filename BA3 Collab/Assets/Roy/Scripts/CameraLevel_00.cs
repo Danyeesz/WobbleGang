@@ -65,7 +65,7 @@ public class CameraLevel_00 : MonoBehaviour
         //transform.LookAt(target);
         Vector3 cameraPosition = new Vector3(transform.position.x, y,z);
 
-        transform.position = Vector3.Lerp(transform.position,cameraPosition,.5f);
+        transform.position = Vector3.Lerp(transform.position,cameraPosition,100f);
     }
 
 
@@ -96,7 +96,7 @@ public class CameraLevel_00 : MonoBehaviour
 
         if (zDifference <= 13)
         {
-            y = yMin + ((zDifference / 100)*(yMax-yMin));
+            y = 13f;
         }
         else if (zDifference > 13 && zDifference < 45)
         {
@@ -105,7 +105,7 @@ public class CameraLevel_00 : MonoBehaviour
         }
         else
         {
-            y = yMin + ((zDifference / 100) * (yMax - yMin));
+            y = 31;
 
         }
      
@@ -116,7 +116,7 @@ public class CameraLevel_00 : MonoBehaviour
         float z;
         if (ZDifference <= 13)
         {
-            z = players[0].transform.position.z - ZOffset(zRange);
+            z = -4;
             
         }
         else if (ZDifference > 13 && ZDifference < 45)
@@ -126,7 +126,7 @@ public class CameraLevel_00 : MonoBehaviour
         }
         else  
         {
-            z = players[0].transform.position.z - ZOffset(zRange);
+            z = 31;
            
         }
         return z;
