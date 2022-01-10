@@ -28,9 +28,15 @@ public class PlayerController_Daniel : MonoBehaviour
     GameObject empty;
     public Animator targetAnimator;
     bool walk = false;
-    
+    public Animator _animatedAnimator;
+    Transform _animatedTorso;
 
- 
+
+
+    public Transform GetAnimatedBone(HumanBodyBones bone)
+    {
+        return _animatedAnimator.GetBoneTransform(bone);
+    }
 
     void Awake()
     {
@@ -45,7 +51,11 @@ public class PlayerController_Daniel : MonoBehaviour
         control.Movement.Jump.performed += ctx => Jump();
         control.Movement.Grab.performed += ctx => Grab();
         control.Movement.Grab.canceled += ctx => UnGrab();
-        
+       _animatedTorso =  _animatedAnimator.GetBoneTransform(HumanBodyBones.Hips);
+
+
+
+
     }
 
     private void OnEnable()
@@ -163,5 +173,8 @@ public class PlayerController_Daniel : MonoBehaviour
             walk = false;
         }
         targetAnimator.SetBool("Walk", walk);
+
+        _animatedAnimator.transform.position = hips.position
+                                + (_animatedAnimator.transform.position - _animatedTorso.position);
     }
 }
