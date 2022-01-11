@@ -11,8 +11,7 @@ public class PlayerController_Daniel : MonoBehaviour
     public Vector3 velocity;
     float gravity = -9.81f;
     public bool isGrounded;
-    public bool rightHandGrab;
-    public bool leftHandGrab;
+    public bool canGrab;
     public GameObject groundC;
     public LayerMask ground;
     public LayerMask objects;
@@ -20,42 +19,27 @@ public class PlayerController_Daniel : MonoBehaviour
     PlayerControls control;
     Transform armature;
     Transform hips;
-    public Transform righthandpos;
-    public Transform lefthandpos;
+    public Transform grabPos;
     Rigidbody rightHand;
     Rigidbody leftHand;
     Rigidbody hipsr;
-    GameObject empty;
-    public Animator targetAnimator;
     bool walk = false;
     public Animator _animatedAnimator;
+    public Animator _physicalAnimator;
     Transform _animatedTorso;
+    Transform _physicalTorso;
 
 
 
-    public Transform GetAnimatedBone(HumanBodyBones bone)
-    {
-        return _animatedAnimator.GetBoneTransform(bone);
-    }
-
+  
     void Awake()
     {
         control = new PlayerControls();
         armature = transform.GetChild(0);
         hips = armature.GetChild(0);
         hipsr = hips.GetComponent<Rigidbody>();
-
-        leftHand = GameObject.Find("Lowerarm.L").GetComponent<Rigidbody>();
-        rightHand = GameObject.Find("Lowerarm.R").GetComponent<Rigidbody>();
-
-        control.Movement.Jump.performed += ctx => Jump();
-        control.Movement.Grab.performed += ctx => Grab();
-        control.Movement.Grab.canceled += ctx => UnGrab();
-       _animatedTorso =  _animatedAnimator.GetBoneTransform(HumanBodyBones.Hips);
-
-
-
-
+        _animatedTorso =  _animatedAnimator.GetBoneTransform(HumanBodyBones.Hips);
+        _physicalTorso = _physicalAnimator.GetBoneTransform(HumanBodyBones.Hips);
     }
 
     private void OnEnable()
@@ -84,66 +68,52 @@ public class PlayerController_Daniel : MonoBehaviour
 
     }
 
-    void Jump() 
+    public void Jump(InputAction.CallbackContext value) 
     {
-
-        if (isGrounded == true)
+        if (value.performed)
         {
-            velocity.y = Mathf.Sqrt((2f * -2f * gravity));
-            isGrounded = false;
-            hipsr.AddForce(new Vector3(0,600,0));
+            if (isGrounded == true)
+            {
+                velocity.y = Mathf.Sqrt((2f * -2f * gravity));
+                isGrounded = false;
+                hipsr.AddForce(new Vector3(0, 600, 0));
+            }
         }
+        
 
     }
-    void Grab()
+    public void Grab(InputAction.CallbackContext value)
     {
-
-        rightHandGrab = Physics.CheckSphere(righthandpos.transform.position, 0.2f, objects);
-        if (rightHandGrab==true)
+        if (value.performed)
         {
-            Collider[] r_colliders = Physics.OverlapSphere(righthandpos.transform.position, 0.5f, objects);
-            foreach (Collider coll in r_colliders)
+            canGrab = Physics.CheckSphere(grabPos.transform.position, 2f, objects);
+            if (canGrab == true)
             {
-                
-                coll.gameObject.AddComponent<FixedJoint>();
-                coll.GetComponent<FixedJoint>().connectedBody = rightHand;
+                Collider[] r_colliders = Physics.OverlapSphere(grabPos.transform.position, 0.2f, objects);
+                foreach (Collider coll in r_colliders)
+                {
 
-            }
-         
-        }
-        leftHandGrab = Physics.CheckSphere(lefthandpos.transform.position, 0.5f, objects);
-        if (leftHandGrab == true)
-        {
-            Collider[] r_colliders = Physics.OverlapSphere(lefthandpos.transform.position, 0.5f, objects);
-            foreach (Collider coll in r_colliders)
-            {
+                    coll.gameObject.AddComponent<FixedJoint>();
+                    coll.GetComponent<FixedJoint>().connectedBody = hipsr;
 
-                coll.gameObject.AddComponent<FixedJoint>();
-                coll.GetComponent<FixedJoint>().connectedBody = leftHand;
-
+                }
             }
         }
+        else if (value.canceled)
+        {
+            canGrab = false;
+            UnGrab();
+        }
+        
 
     }
 
     void UnGrab() 
     {
-        rightHandGrab = Physics.CheckSphere(righthandpos.transform.position, 0.5f, objects);
-        if (rightHandGrab == true)
+        canGrab = Physics.CheckSphere(grabPos.transform.position, 0.5f, objects);
+        if (canGrab == true)
         {
-            Collider[] r_colliders = Physics.OverlapSphere(righthandpos.transform.position, 0.5f, objects);
-            foreach (Collider coll in r_colliders)
-            {
-
-                Destroy(coll.GetComponent<FixedJoint>());
-
-            }
-
-        }
-        leftHandGrab = Physics.CheckSphere(lefthandpos.transform.position, 0.5f, objects);
-        if (leftHandGrab == true)
-        {
-            Collider[] r_colliders = Physics.OverlapSphere(lefthandpos.transform.position, 0.5f, objects);
+            Collider[] r_colliders = Physics.OverlapSphere(grabPos.transform.position, 0.5f, objects);
             foreach (Collider coll in r_colliders)
             {
 
@@ -151,8 +121,6 @@ public class PlayerController_Daniel : MonoBehaviour
 
             }
         }
-
-
     }
 
 
@@ -172,9 +140,11 @@ public class PlayerController_Daniel : MonoBehaviour
         {
             walk = false;
         }
-        targetAnimator.SetBool("Walk", walk);
+        _animatedAnimator.SetBool("Walk", walk);
 
-        _animatedAnimator.transform.position = hips.position
+        _animatedAnimator.transform.position = _physicalTorso.position
                                 + (_animatedAnimator.transform.position - _animatedTorso.position);
+        _animatedAnimator.transform.rotation = _physicalTorso.rotation;
+                               
     }
 }
