@@ -39,7 +39,7 @@ public class CameraLevel_00 : MonoBehaviour
 
         //yRange = Mathf.Abs(yMax - yMin);
        // zRange = Mathf.Abs(zMax-zMin);
-        Debug.Log(players.Length);
+       // Debug.Log(players.Length);
     }
 
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class CameraLevel_00 : MonoBehaviour
         float z = players[0].transform.position.z - ZOffset(zRange);
         float y = DetermineCameraY(zRange);
 
-        Debug.Log("z val: " + z + " y val: " + y + "z Range: " + zRange);
+        //Debug.Log("z val: " + z + " y val: " + y + "z Range: " + zRange);
         //Vector3 avgPos = AveragePositionVector();
         //Vector3 target = new Vector3(9f, avgPos.y, (avgPos.z+players[0].transform.position.z)/2);
         //transform.LookAt(target);
