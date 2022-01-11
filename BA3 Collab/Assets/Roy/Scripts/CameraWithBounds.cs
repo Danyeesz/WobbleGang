@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraWithBounds : MonoBehaviour
 {
-    GameObject[] players;
+    public GameObject[] players;
     public Vector3 offset;
     private Vector3 velocity;
     public float smoothTime = .5f;
@@ -20,13 +20,14 @@ public class CameraWithBounds : MonoBehaviour
 
     void Start()
     {
-        players = GameObject.FindGameObjectsWithTag("Player");
+       
         cam = GetComponent<Camera>();
     }
 
 
     private void LateUpdate()
     {
+        players = GameObject.FindGameObjectsWithTag("Player");
         if (players == null) 
         {
             //players = GameObject.FindGameObjectsWithTag("Player");

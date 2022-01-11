@@ -101,7 +101,7 @@ public class PlayerController_Daniel : MonoBehaviour
                     coll.gameObject.AddComponent<FixedJoint>();
                     coll.GetComponent<FixedJoint>().connectedBody = hipsr;
                     toGrab = coll.gameObject;
-                    coll.transform.position = grabPos.position;
+                    coll.transform.position = new Vector3(grabPos.position.x, grabPos.position.y+20, grabPos.position.z);
 
                 }
             }
@@ -142,7 +142,7 @@ public class PlayerController_Daniel : MonoBehaviour
         if (direction.magnitude >= 0.1f) { 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
-            hipsr.AddForce(direction * 20 *Time.deltaTime);
+            hipsr.AddForce(direction * 1000 *Time.deltaTime);
             walk = true;
         }
         else
