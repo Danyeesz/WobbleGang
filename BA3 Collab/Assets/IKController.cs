@@ -10,8 +10,7 @@ public class IKController : MonoBehaviour
     protected Animator animator;
 
     public bool ikActive = false;
-    public Transform rightHandObj = null;
-    public Transform leftHandObj = null;
+    public GameObject ObjToGrab = null;
     public bool grab;
     public PlayerController_Daniel controller;
 
@@ -23,6 +22,7 @@ public class IKController : MonoBehaviour
     private void Update()
     {
         grab = controller.canGrab;
+        ObjToGrab = controller.toGrab;
     }
     //a callback for calculating IK
     void OnAnimatorIK()
@@ -33,20 +33,18 @@ public class IKController : MonoBehaviour
             //if the IK is active, set the position and rotation directly to the goal. 
             if ( grab == true)
             {
+                
                 // Set the right hand target position and rotation, if one has been assigned
-                if (rightHandObj != null)
+                if (ObjToGrab != null)
                 {
                     animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
                     animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                    animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
-                    animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
-                }
-                if (leftHandObj !=null)
-                {
+                    animator.SetIKPosition(AvatarIKGoal.RightHand, ObjToGrab.transform.position);
+                    animator.SetIKRotation(AvatarIKGoal.RightHand, ObjToGrab.transform.rotation);
                     animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
                     animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-                    animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.position);
-                    animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.rotation);
+                    animator.SetIKPosition(AvatarIKGoal.LeftHand, ObjToGrab.transform.position);
+                    animator.SetIKRotation(AvatarIKGoal.LeftHand, ObjToGrab.transform.rotation);
                 }
             }
 
@@ -57,6 +55,7 @@ public class IKController : MonoBehaviour
                 animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0); 
                 animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
                 animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0);
+                ObjToGrab = null;
                
             }
         }
