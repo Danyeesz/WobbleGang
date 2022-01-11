@@ -28,6 +28,7 @@ public class PlayerController_Daniel : MonoBehaviour
     public Animator _physicalAnimator;
     Transform _animatedTorso;
     Transform _physicalTorso;
+    public GameObject toGrab;
 
 
 
@@ -95,6 +96,8 @@ public class PlayerController_Daniel : MonoBehaviour
 
                     coll.gameObject.AddComponent<FixedJoint>();
                     coll.GetComponent<FixedJoint>().connectedBody = hipsr;
+                    toGrab = coll.gameObject;
+                    coll.transform.position = grabPos.position;
 
                 }
             }
@@ -103,6 +106,7 @@ public class PlayerController_Daniel : MonoBehaviour
         {
             canGrab = false;
             UnGrab();
+
         }
         
 
@@ -120,6 +124,7 @@ public class PlayerController_Daniel : MonoBehaviour
                 Destroy(coll.GetComponent<FixedJoint>());
 
             }
+            toGrab = null;
         }
     }
 
