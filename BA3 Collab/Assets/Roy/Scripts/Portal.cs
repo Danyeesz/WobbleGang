@@ -5,24 +5,24 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public Transform target;
-    public float portalRadious=.2f;
+    public float portalRadious=1f;
    
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") 
+        /*if (other.tag == "Player") 
         {
-            /*
+            
             float distance = Vector3.Distance(other.transform.position , this.transform.position);
             if (distance > portalRadious) 
             {
                 other.transform.position = target.position;
                 other.transform.rotation = target.rotation;
-            }*/
+            }
             //other.transform.position =new Vector3( target.position.x,target.position.y,target.position.z);
             other.transform.position = target.position;
             other.transform.rotation = target.rotation;
-        }
+        }*/
         float distance=Vector3.Distance(other.transform.position, this.transform.position); ;
         if (distance > portalRadious)
         {
@@ -30,6 +30,6 @@ public class Portal : MonoBehaviour
             other.transform.rotation = target.rotation;
         }
        
-        Debug.Log("Something entered "+other.tag);
+       // Debug.Log("Something entered "+other.tag);
     }
 }
