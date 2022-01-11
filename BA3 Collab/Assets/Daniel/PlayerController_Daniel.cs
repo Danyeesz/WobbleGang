@@ -77,7 +77,8 @@ public class PlayerController_Daniel : MonoBehaviour
             {
                 velocity.y = Mathf.Sqrt((2f * -2f * gravity));
                 isGrounded = false;
-                hipsr.AddForce(new Vector3(0, 600, 0));
+                hipsr.AddForce(new Vector3(0, 6000, 0));
+                Debug.LogWarning("Jump");
             }
         }
         
@@ -138,7 +139,7 @@ public class PlayerController_Daniel : MonoBehaviour
         if (direction.magnitude >= 0.1f) { 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
-            hipsr.AddForce(direction * 20);
+            hipsr.AddForce(direction * 20 *Time.deltaTime);
             walk = true;
         }
         else

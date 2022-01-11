@@ -28,6 +28,7 @@ Transform:
   m_LocalScale: {x: 0.99999833, y: 0.9999966, z: 0.9999999}
   m_Children:
   - {fileID: 8597549264087044384}
+  - {fileID: 6570407022841994884}
   m_Father: {fileID: 1372635376806710508}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -626,7 +627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6675600311580851281}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 33.63, y: 0, z: 0}
 --- !u!20 &3477312266326545886
 Camera:
@@ -2372,7 +2373,6 @@ Transform:
   m_Children:
   - {fileID: 2311659767793757391}
   - {fileID: 1270795168419545521}
-  - {fileID: 6570407022841994884}
   - {fileID: 8729050446588644445}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2400,9 +2400,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   grabPos: {fileID: 6570407023316070191}
-  targetAnimator: {fileID: 0}
   _animatedAnimator: {fileID: 0}
   _physicalAnimator: {fileID: 0}
+  toGrab: {fileID: 0}
 --- !u!114 &1265977743262607259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2497,8 +2497,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ikActive: 0
-  rightHandObj: {fileID: 0}
-  leftHandObj: {fileID: 0}
+  ObjToGrab: {fileID: 0}
+  grab: 0
+  controller: {fileID: 0}
 --- !u!1 &6349698270521253133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2552,12 +2553,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6570407022841994883}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.028244633, y: 0.44962123, z: 0.8879728, w: -0.09245171}
+  m_LocalPosition: {x: 0.0022018093, y: 0.0008880579, z: -0.00090105797}
+  m_LocalScale: {x: 0.010000148, y: 0.010000022, z: 0.010000071}
   m_Children: []
-  m_Father: {fileID: 6675600311580851281}
-  m_RootOrder: 2
+  m_Father: {fileID: 8831311940076409554}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6570407023316070190
 GameObject:

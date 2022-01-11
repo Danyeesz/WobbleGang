@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3593903670806197421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.494225, y: 7.8, z: -18.101862}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6494518805611715696}
@@ -293,15 +293,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6675600311580851281, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6675600311580851281, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.93
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6675600311580851281, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6675600311580851281, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
       propertyPath: m_LocalRotation.w
@@ -545,7 +545,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ikActive: 0
-  rightHandObj: {fileID: 0}
-  leftHandObj: {fileID: 0}
+  ObjToGrab: {fileID: 0}
   grab: 0
   controller: {fileID: 6749650149519439204}
