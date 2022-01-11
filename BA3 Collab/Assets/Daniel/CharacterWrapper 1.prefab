@@ -375,6 +375,26 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 3359490599334109886, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
   m_PrefabInstance: {fileID: 469875662398152737}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4468728396569574687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4071616489846545726, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
+  m_PrefabInstance: {fileID: 469875662398152737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7629884668476788468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4468728396569574687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4bbc14cb03f1a498e3f17f1ba833f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterMat1: {fileID: 2100000, guid: 9592b71ce1223234d90b12b631401b3e, type: 2}
+  CharacterMat2: {fileID: 2100000, guid: 4c4e84a2fa7cee44fb34ae819252b35f, type: 2}
+  random: 0
 --- !u!1001 &6621482870221444285
 PrefabInstance:
   m_ObjectHideFlags: 0
