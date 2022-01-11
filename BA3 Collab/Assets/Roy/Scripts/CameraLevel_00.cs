@@ -51,10 +51,7 @@ public class CameraLevel_00 : MonoBehaviour
 
         zRange =Mathf.Abs(players[players.Length - 1].transform.position.z - players[0].transform.position.z);
         
-        for (int i = 0; i <= players.Length - 1; i++) 
-        {
-            Debug.Log(players[i].transform.position.z);
-        }
+      
 
         float z = players[0].transform.position.z - ZOffset(zRange);
         float y = DetermineCameraY(zRange);
@@ -74,9 +71,9 @@ public class CameraLevel_00 : MonoBehaviour
 
     void SortByZvalueAccendingOrder()
     {
-        for (int i = 0; i < (players.Length - 2); i++)
+        for (int i = 0; i < (players.Length - 1); i++)
         {
-            for (int j = 1; j < (players.Length - 1); j++)
+            for (int j = 1; j < (players.Length); j++)
             {
                 if (players[i].transform.position.z > players[j].transform.position.z)
                 {
@@ -142,9 +139,9 @@ public class CameraLevel_00 : MonoBehaviour
     }
     void SortByYvalueAccendingOrder()
     {
-        for (int i = 0; i < (players.Length - 2); i++)
+        for (int i = 0; i < (players.Length - 1); i++)
         {
-            for (int j = 1; j < (players.Length - 1); j++)
+            for (int j = 1; j < (players.Length); j++)
             {
                 if (players[i].transform.position.y > players[j].transform.position.y)
                 {
