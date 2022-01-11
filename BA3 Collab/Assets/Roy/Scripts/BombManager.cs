@@ -27,7 +27,7 @@ public class BombManager : MonoBehaviour
     }
 
     void SpawnBomb() 
-    {
+    {/*
         foreach (BombSpawnPoint spawnPoint in bombSpawnPoints) 
         {
             if (spawnPoint.isAvailable) 
@@ -40,15 +40,20 @@ public class BombManager : MonoBehaviour
                 }
             }
         }
+*/
 
-/*
         for (int i = 0; i < bombSpawnPoints.Length; i++) 
         {
             if (bombSpawnPoints[i].isAvailable) 
             {
-                
+                Grenade[] bombs = FindObjectsOfType<Grenade>();
+                if (bombs.Length < totalBomb) 
+                {
+                    Instantiate(bomb, bombSpawnPoints[i].transform.position, bombSpawnPoints[i].transform.rotation);
+                    //bombSpawnPoints[i].isAvailable = false;
+                }
             }
         }
-    */
+    
     }
 }

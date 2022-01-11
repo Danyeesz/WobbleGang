@@ -5,24 +5,17 @@ using UnityEngine;
 public class BombSpawnPoint : MonoBehaviour
 {
     public bool isAvailable=true;
+    public float checkRadius = 1f;
+    public LayerMask bombLayer;
 
     private void Start()
     {
         isAvailable = true;
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void Update()
     {
-        if (other.tag == "Bomb") 
-        {
-            isAvailable = false;
-        }
+        isAvailable =! Physics.CheckSphere(transform.position, checkRadius, bombLayer);
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Bomb") 
-        {
-            isAvailable = true;
-        }
-    }
 }
