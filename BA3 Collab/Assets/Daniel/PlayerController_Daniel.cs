@@ -91,10 +91,13 @@ public class PlayerController_Daniel : MonoBehaviour
             canGrab = Physics.CheckSphere(grabPos.transform.position, 2f, objects);
             if (canGrab == true)
             {
-                Collider[] r_colliders = Physics.OverlapSphere(grabPos.transform.position, 0.2f, objects);
+                Collider[] r_colliders = Physics.OverlapSphere(grabPos.transform.position, 2f, objects);
                 foreach (Collider coll in r_colliders)
                 {
-
+                    if (coll.GetComponent<Grenade>() != null)
+                    {
+                        coll.GetComponent<Grenade>().ActivateBomb();
+                    }
                     coll.gameObject.AddComponent<FixedJoint>();
                     coll.GetComponent<FixedJoint>().connectedBody = hipsr;
                     toGrab = coll.gameObject;
