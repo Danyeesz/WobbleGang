@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2099411196031022009}
   m_Layer: 0
   m_Name: CharacterWrapper 1
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,13 +123,17 @@ PrefabInstance:
       propertyPath: targetLimb
       value: 
       objectReference: {fileID: 7483649129047405169}
+    - target: {fileID: 5865279479332528999, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6336476378849027819, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
       propertyPath: m_Name
       value: Physical
       objectReference: {fileID: 0}
     - target: {fileID: 6336476378849027819, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6570407022085700066, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
       propertyPath: m_ConnectedAnchor.x

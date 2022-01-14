@@ -8,7 +8,7 @@ public class CameraWithBounds : MonoBehaviour
 {
     public GameObject[] players;
     public Vector3 offset;
-    private Vector3 velocity;
+    private Vector3 velocity=Vector3.zero;
     public float smoothTime = .5f;
 
     public float minZoom = 70f;
@@ -25,12 +25,11 @@ public class CameraWithBounds : MonoBehaviour
     }
 
 
-    private void Update()
+    private void LateUpdate()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length==0)
         {
-            //players = GameObject.FindGameObjectsWithTag("Player");
             return;
         }
         else
@@ -43,11 +42,22 @@ public class CameraWithBounds : MonoBehaviour
 
     private void Move()
     {
-        Vector3 centerPoint = GetCenterPosition();
+        Vector3 centerPoint;
+        if (players.Length == 1)
+        {
+            centerPoint = players[0].transform.position;
+
+        }
+        else
+        {
+            centerPoint = GetCenterPosition();
+        }
         Vector3 newPosition = centerPoint + offset;
         //Vector3 newCenterPos = new Vector3(transform.position.x, centerPoint.y, centerPoint.z);
         //Vector3 newPosition = newCenterPos + offset;
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+        
+       
     }
 
     void Zoom() 
@@ -64,14 +74,10 @@ public class CameraWithBounds : MonoBehaviour
         {
             bounds.Encapsulate(players[i].transform.position);
         }
-        return bounds.size.z;
+        return bounds.size.x;
     }
     Vector3 GetCenterPosition() 
-    {
-        if (players.Length == 1)
-        {
-            return players[0].transform.position;
-        }
+    { 
 
         var bounds = new Bounds(players[0].transform.position, Vector3.zero);
 
@@ -79,7 +85,7 @@ public class CameraWithBounds : MonoBehaviour
         {
             bounds.Encapsulate(players[i].transform.position);
         }
-
+        Debug.Log("center position"+ bounds.center);
         return bounds.center;
     }
 }
