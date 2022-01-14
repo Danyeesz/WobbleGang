@@ -12,7 +12,7 @@ public class CameraWithBounds : MonoBehaviour
     public float smoothTime = .5f;
 
     public float minZoom = 70f;
-    public float maxZoom = 40f;
+    public float maxZoom = 50f;
     public float zoomLimiter = 50f;
 
     private Camera cam;
@@ -25,16 +25,19 @@ public class CameraWithBounds : MonoBehaviour
     }
 
 
-    private void LateUpdate()
+    private void Update()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        if (players == null) 
+        if (players.Length==0)
         {
             //players = GameObject.FindGameObjectsWithTag("Player");
             return;
         }
-        Move();
-        Zoom();
+        else
+        {
+            Move();
+            Zoom();
+        }
        
     }
 
@@ -49,7 +52,7 @@ public class CameraWithBounds : MonoBehaviour
 
     void Zoom() 
     {
-        float newZoom = Mathf.Lerp(minZoom,maxZoom,GreatestDistance()/15f);
+        float newZoom = Mathf.Lerp(maxZoom,minZoom,GreatestDistance()/zoomLimiter);
         cam.fieldOfView = newZoom;
     }
 
