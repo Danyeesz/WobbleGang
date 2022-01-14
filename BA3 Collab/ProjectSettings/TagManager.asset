@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BombSpawner
   - Bomb
+  - Object
   layers:
   - Default
   - TransparentFX

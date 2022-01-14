@@ -10,24 +10,14 @@ public class Portal : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        /*if (other.tag == "Player") 
+        if (other.tag == "Player" || other.tag == "Object" || other.tag == "Bomb")
         {
-            
-            float distance = Vector3.Distance(other.transform.position , this.transform.position);
-            if (distance > portalRadious) 
+            float distance = Vector3.Distance(other.transform.position, this.transform.position); ;
+            if (distance > portalRadious)
             {
                 other.transform.position = target.position;
                 other.transform.rotation = target.rotation;
             }
-            //other.transform.position =new Vector3( target.position.x,target.position.y,target.position.z);
-            other.transform.position = target.position;
-            other.transform.rotation = target.rotation;
-        }*/
-        float distance=Vector3.Distance(other.transform.position, this.transform.position); ;
-        if (distance > portalRadious)
-        {
-            other.transform.position = target.position;
-            other.transform.rotation = target.rotation;
         }
        
        // Debug.Log("Something entered "+other.tag);
