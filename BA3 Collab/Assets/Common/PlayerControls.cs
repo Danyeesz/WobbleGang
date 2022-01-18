@@ -185,6 +185,114 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MenuControls"",
+            ""id"": ""7c0134c7-30d9-45e8-a0b6-5437823764b6"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""d747b18c-27e0-42e7-bbef-dc45f1a4cfc8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d302f24-9099-49f8-9bc4-c8bd6ec3164a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeColor Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""573b2dda-4c06-4daf-a9ff-bfaad244883c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeColor Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e99137a-b52c-4a4a-bf9f-44d37fa87259"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ready"",
+                    ""type"": ""Button"",
+                    ""id"": ""652c4ef3-8eab-49ce-ba9f-54e22ec95ab1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c41e1b12-5529-47a8-b2b5-13aa5b49be2e"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3308287b-656f-4c3c-a5a1-a3d89820ba25"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0f3ab85f-f913-4029-93c5-9ace380f3227"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeColor Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41de2baa-57b7-437d-99a4-e9026bfa2546"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeColor Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6044206-7e79-42f9-b2e0-d4193c3215b4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ready"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -208,6 +316,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Movement_Grab = m_Movement.FindAction("Grab", throwIfNotFound: true);
         m_Movement_Punch = m_Movement.FindAction("Punch", throwIfNotFound: true);
         m_Movement_Newaction = m_Movement.FindAction("New action", throwIfNotFound: true);
+        // MenuControls
+        m_MenuControls = asset.FindActionMap("MenuControls", throwIfNotFound: true);
+        m_MenuControls_MoveLeft = m_MenuControls.FindAction("MoveLeft", throwIfNotFound: true);
+        m_MenuControls_MoveRight = m_MenuControls.FindAction("Move Right", throwIfNotFound: true);
+        m_MenuControls_ChangeColorLeft = m_MenuControls.FindAction("ChangeColor Left", throwIfNotFound: true);
+        m_MenuControls_ChangeColorRight = m_MenuControls.FindAction("ChangeColor Right", throwIfNotFound: true);
+        m_MenuControls_Ready = m_MenuControls.FindAction("Ready", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +443,71 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
+
+    // MenuControls
+    private readonly InputActionMap m_MenuControls;
+    private IMenuControlsActions m_MenuControlsActionsCallbackInterface;
+    private readonly InputAction m_MenuControls_MoveLeft;
+    private readonly InputAction m_MenuControls_MoveRight;
+    private readonly InputAction m_MenuControls_ChangeColorLeft;
+    private readonly InputAction m_MenuControls_ChangeColorRight;
+    private readonly InputAction m_MenuControls_Ready;
+    public struct MenuControlsActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveLeft => m_Wrapper.m_MenuControls_MoveLeft;
+        public InputAction @MoveRight => m_Wrapper.m_MenuControls_MoveRight;
+        public InputAction @ChangeColorLeft => m_Wrapper.m_MenuControls_ChangeColorLeft;
+        public InputAction @ChangeColorRight => m_Wrapper.m_MenuControls_ChangeColorRight;
+        public InputAction @Ready => m_Wrapper.m_MenuControls_Ready;
+        public InputActionMap Get() { return m_Wrapper.m_MenuControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuControlsActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuControlsActions instance)
+        {
+            if (m_Wrapper.m_MenuControlsActionsCallbackInterface != null)
+            {
+                @MoveLeft.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnMoveLeft;
+                @MoveLeft.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnMoveLeft;
+                @MoveLeft.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnMoveLeft;
+                @MoveRight.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnMoveRight;
+                @MoveRight.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnMoveRight;
+                @MoveRight.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnMoveRight;
+                @ChangeColorLeft.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnChangeColorLeft;
+                @ChangeColorLeft.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnChangeColorLeft;
+                @ChangeColorLeft.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnChangeColorLeft;
+                @ChangeColorRight.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnChangeColorRight;
+                @ChangeColorRight.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnChangeColorRight;
+                @ChangeColorRight.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnChangeColorRight;
+                @Ready.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnReady;
+                @Ready.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnReady;
+                @Ready.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnReady;
+            }
+            m_Wrapper.m_MenuControlsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MoveLeft.started += instance.OnMoveLeft;
+                @MoveLeft.performed += instance.OnMoveLeft;
+                @MoveLeft.canceled += instance.OnMoveLeft;
+                @MoveRight.started += instance.OnMoveRight;
+                @MoveRight.performed += instance.OnMoveRight;
+                @MoveRight.canceled += instance.OnMoveRight;
+                @ChangeColorLeft.started += instance.OnChangeColorLeft;
+                @ChangeColorLeft.performed += instance.OnChangeColorLeft;
+                @ChangeColorLeft.canceled += instance.OnChangeColorLeft;
+                @ChangeColorRight.started += instance.OnChangeColorRight;
+                @ChangeColorRight.performed += instance.OnChangeColorRight;
+                @ChangeColorRight.canceled += instance.OnChangeColorRight;
+                @Ready.started += instance.OnReady;
+                @Ready.performed += instance.OnReady;
+                @Ready.canceled += instance.OnReady;
+            }
+        }
+    }
+    public MenuControlsActions @MenuControls => new MenuControlsActions(this);
     private int m_ControllerSchemeIndex = -1;
     public InputControlScheme ControllerScheme
     {
@@ -344,5 +524,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnGrab(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
         void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IMenuControlsActions
+    {
+        void OnMoveLeft(InputAction.CallbackContext context);
+        void OnMoveRight(InputAction.CallbackContext context);
+        void OnChangeColorLeft(InputAction.CallbackContext context);
+        void OnChangeColorRight(InputAction.CallbackContext context);
+        void OnReady(InputAction.CallbackContext context);
     }
 }
