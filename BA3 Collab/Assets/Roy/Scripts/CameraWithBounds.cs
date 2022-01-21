@@ -85,7 +85,6 @@ public class CameraWithBounds : MonoBehaviour
         {
             bounds.Encapsulate(players[i].transform.position);
         }
-        Debug.Log("center position"+ bounds.center);
         return bounds.center;
     }
 }

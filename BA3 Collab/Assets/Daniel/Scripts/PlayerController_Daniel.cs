@@ -30,6 +30,9 @@ public class PlayerController_Daniel : MonoBehaviour
     Transform _physicalTorso;
     public GameObject toGrab;
 
+    
+
+
 
 
   
@@ -41,6 +44,28 @@ public class PlayerController_Daniel : MonoBehaviour
         hipsr = hips.GetComponent<Rigidbody>();
         _animatedTorso =  _animatedAnimator.GetBoneTransform(HumanBodyBones.Hips);
         _physicalTorso = _physicalAnimator.GetBoneTransform(HumanBodyBones.Hips);
+        CharacterSelect CharSelect = GameObject.Find("Player(Clone) 1").GetComponent<CharacterSelect>();
+       /* if (Gamepad.current.deviceId == CharSelect.joyId)
+        {
+            if (CharSelect.CharID == 0)
+            {
+                
+            }
+            else if (CharSelect.CharID == 1)
+            {
+                
+            }
+            else if (CharSelect.CharID == 2)
+            {
+                
+            }
+            else if (CharSelect.CharID == 3)
+            {
+                
+            }
+
+        }*/
+        
     }
 
     private void OnEnable()
@@ -55,10 +80,10 @@ public class PlayerController_Daniel : MonoBehaviour
 
     public void Walk(InputAction.CallbackContext value)
     {
+
         if (value.performed)
         {
             move = value.ReadValue<Vector2>();
-            
 
         }
         else if (value.canceled)

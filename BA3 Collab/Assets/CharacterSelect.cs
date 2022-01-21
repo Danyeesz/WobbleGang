@@ -9,7 +9,7 @@ using TMPro;
 
 public class CharacterSelect : MonoBehaviour
 {
-    public string selectedChar;
+    
     PlayerControls control;
     public Transform canvas;
     public Transform PlayerCount;
@@ -20,6 +20,9 @@ public class CharacterSelect : MonoBehaviour
     public Image CharImage;
     public Sprite [] sprites;
     int spriteIndex;
+    public GameObject ReadyText;
+    public int joyId;
+    public int CharID;
 
     private void Awake()
     {
@@ -27,18 +30,22 @@ public class CharacterSelect : MonoBehaviour
         NumberOfPlayers = GameObject.Find("MenuManager").GetComponent<MenuManager>().playerCount;
 
         Debug.Log(NumberOfPlayers);
-
+        DontDestroyOnLoad(this.gameObject);
 
         PlayerCount.GetComponent<TextMeshProUGUI>().text = "Player " + NumberOfPlayers.ToString();
         if (NumberOfPlayers == 1)
         {
             CharTeamSelect.position = GameObject.Find("Player1pos").transform.position;
+            gameObject.name = gameObject.name + " 1";
         }
         else if (NumberOfPlayers == 2)
         {
             CharTeamSelect.position = GameObject.Find("Player2pos").transform.position;
+            gameObject.name = gameObject.name + " 2";
+
         }
-     
+       Debug.Log(Gamepad.current.deviceId);
+
     }
 
     public void TeamRight(InputAction.CallbackContext value) 
@@ -83,6 +90,21 @@ public class CharacterSelect : MonoBehaviour
             }
             CharImage.sprite = sprites[spriteIndex];
         }
+    }
+
+    public void ReadyToPlay(InputAction.CallbackContext value) 
+    {
+        if (value.performed)
+        {
+            ReadyText.SetActive(true);
+            joyId = Gamepad.current.deviceId;
+            SceneManager.LoadScene("Level1_Daniel");
+            gameObject.GetComponent<PlayerInput>().enabled = false;
+            canvas.GetComponent<Canvas>().enabled = false;
+            CharID = spriteIndex;
+        }
+      
+       
     }
 
     private void OnEnable()
