@@ -794,19 +794,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc5076968e6fd6545a4d70e836796798, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99895257
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc5076968e6fd6545a4d70e836796798, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc5076968e6fd6545a4d70e836796798, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.04575876
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc5076968e6fd6545a4d70e836796798, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc5076968e6fd6545a4d70e836796798, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -814,7 +814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc5076968e6fd6545a4d70e836796798, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 5.245
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc5076968e6fd6545a4d70e836796798, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1264,7 +1264,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
