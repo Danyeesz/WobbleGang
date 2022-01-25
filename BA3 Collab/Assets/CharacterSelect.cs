@@ -13,38 +13,78 @@ public class CharacterSelect : MonoBehaviour
     PlayerControls control;
     public Transform canvas;
     public Transform PlayerCount;
-    int NumberOfPlayers;
+    public int NumberOfPlayers;
     public Transform CharTeamSelect;
     public TextMeshProUGUI TeamText;
     public Image TeamColor;
     public Image CharImage;
-    public Sprite [] sprites;
+    public Sprite [] CharSprites;
+    public Sprite [] TeamSprites;
     int spriteIndex;
+    int TeamIndex;
     public GameObject ReadyText;
     public int joyId;
-    public int CharID;
+    public int CharID = 0;
+    GameObject player1pos;
+    GameObject player2pos;
+    GameObject player3pos;
+    GameObject player4pos;
+    GameObject MenuManager;
+   
 
     private void Awake()
     {
+        player1pos = GameObject.Find("Player1pos");
+        player2pos = GameObject.Find("Player2pos");
+        player3pos = GameObject.Find("Player3pos");
+        player4pos = GameObject.Find("Player4pos");
+
         control = new PlayerControls();
-        NumberOfPlayers = GameObject.Find("MenuManager").GetComponent<MenuManager>().playerCount;
-
-        Debug.Log(NumberOfPlayers);
+        MenuManager = GameObject.Find("MenuManager");
+        NumberOfPlayers = MenuManager.GetComponent<MenuManager>().playerCount;
         DontDestroyOnLoad(this.gameObject);
-
+       
         PlayerCount.GetComponent<TextMeshProUGUI>().text = "Player " + NumberOfPlayers.ToString();
         if (NumberOfPlayers == 1)
         {
-            CharTeamSelect.position = GameObject.Find("Player1pos").transform.position;
+            joyId = 1;
+            CharTeamSelect.position = player1pos.transform.position;
             gameObject.name = gameObject.name + " 1";
+            player1pos.GetComponent<Image>().enabled = false;
+            TeamColor.sprite = TeamSprites[0];
+            PlayerCount.GetComponent<TextMeshProUGUI>().text = "P1";
         }
         else if (NumberOfPlayers == 2)
         {
-            CharTeamSelect.position = GameObject.Find("Player2pos").transform.position;
+            joyId = 2;
+            CharTeamSelect.position = player2pos.transform.position;
             gameObject.name = gameObject.name + " 2";
+            player2pos.GetComponent<Image>().enabled = false;
+            TeamColor.sprite = TeamSprites[0];
+            PlayerCount.GetComponent<TextMeshProUGUI>().text = "P2";
 
         }
-       Debug.Log(Gamepad.current.deviceId);
+        else if (NumberOfPlayers == 3)
+        {
+            joyId = 3;
+            CharTeamSelect.position = player3pos.transform.position;
+            gameObject.name = gameObject.name + " 3";
+            player3pos.GetComponent<Image>().enabled = false;
+            TeamColor.sprite = TeamSprites[0];
+            PlayerCount.GetComponent<TextMeshProUGUI>().text = "P3";
+
+        }
+        else if (NumberOfPlayers == 4)
+        {
+            joyId = 4;
+            CharTeamSelect.position = player4pos.transform.position;
+            gameObject.name = gameObject.name + " 4";
+            player4pos.GetComponent<Image>().enabled = false;
+            TeamColor.sprite = TeamSprites[0];
+            PlayerCount.GetComponent<TextMeshProUGUI>().text = "P4";
+
+        }
+       
 
     }
 
@@ -52,8 +92,15 @@ public class CharacterSelect : MonoBehaviour
     {
         if (value.performed)
         {
-            TeamColor.color = new Color(1, 0, 0, 1);
-            TeamText.text = "Red Team";
+            TeamIndex++;
+            if (TeamIndex > TeamSprites.Length-1)
+            {
+                TeamIndex = 0;
+              
+            }
+            TeamColor.sprite = TeamSprites[TeamIndex];
+      
+           
         }
     }
 
@@ -61,8 +108,13 @@ public class CharacterSelect : MonoBehaviour
     {
         if (value.performed)
         {
-            TeamColor.color = new Color(0,0,1,1);
-            TeamText.text = "Blue Team";
+            TeamIndex--;
+            if (TeamIndex < 0)
+            {
+                TeamIndex = TeamSprites.Length - 1;
+            }
+            TeamColor.sprite = TeamSprites[TeamIndex];
+            
         }
     }
 
@@ -71,11 +123,13 @@ public class CharacterSelect : MonoBehaviour
         if (value.performed)
         {
             spriteIndex++;
-            if (spriteIndex > sprites.Length-1)
+            if (spriteIndex > CharSprites.Length-1)
             {
                 spriteIndex = 0; 
             }
-            CharImage.sprite = sprites[spriteIndex];
+            CharImage.sprite = CharSprites[spriteIndex];
+            CharID = spriteIndex;
+            Debug.Log(CharID);
         }
     }
 
@@ -86,9 +140,11 @@ public class CharacterSelect : MonoBehaviour
             spriteIndex--;
             if (spriteIndex < 0)
             {
-                spriteIndex = sprites.Length-1;
+                spriteIndex = CharSprites.Length-1;
             }
-            CharImage.sprite = sprites[spriteIndex];
+            CharImage.sprite = CharSprites[spriteIndex];
+            CharID = spriteIndex;
+            Debug.Log(CharID);
         }
     }
 
@@ -97,11 +153,9 @@ public class CharacterSelect : MonoBehaviour
         if (value.performed)
         {
             ReadyText.SetActive(true);
-            joyId = Gamepad.current.deviceId;
-            SceneManager.LoadScene("Level1_Daniel");
             gameObject.GetComponent<PlayerInput>().enabled = false;
             canvas.GetComponent<Canvas>().enabled = false;
-            CharID = spriteIndex;
+            MenuManager.GetComponent<MenuManager>().playersReady--;
         }
       
        
@@ -126,7 +180,6 @@ public class CharacterSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
 

@@ -29,13 +29,19 @@ public class PlayerController_Daniel : MonoBehaviour
     Transform _animatedTorso;
     Transform _physicalTorso;
     public GameObject toGrab;
+    public GameObject Lighty;
+    public GameObject Strongy;
+    public GameObject Speedy;
+    public GameObject Breaky;
+    GameObject MenuManager;
+    GameObject GameController;
+    CharacterSelect CharSelectP1;
+    CharacterSelect CharSelectP2;
+    CharacterSelect CharSelectP3;
+    CharacterSelect CharSelectP4;
 
-    
 
 
-
-
-  
     void Awake()
     {
         control = new PlayerControls();
@@ -44,28 +50,75 @@ public class PlayerController_Daniel : MonoBehaviour
         hipsr = hips.GetComponent<Rigidbody>();
         _animatedTorso =  _animatedAnimator.GetBoneTransform(HumanBodyBones.Hips);
         _physicalTorso = _physicalAnimator.GetBoneTransform(HumanBodyBones.Hips);
-        CharacterSelect CharSelect = GameObject.Find("Player(Clone) 1").GetComponent<CharacterSelect>();
-       /* if (Gamepad.current.deviceId == CharSelect.joyId)
-        {
-            if (CharSelect.CharID == 0)
-            {
-                
-            }
-            else if (CharSelect.CharID == 1)
-            {
-                
-            }
-            else if (CharSelect.CharID == 2)
-            {
-                
-            }
-            else if (CharSelect.CharID == 3)
-            {
-                
-            }
-
-        }*/
+        MenuManager = GameObject.Find("MenuManager");
+        GameController = GameObject.Find("GameController");
         
+       /* if (MenuManager.GetComponent<MenuManager>().playerCount == 1)
+        {
+            CharSelectP1 = GameObject.Find("Player(Clone) 1").GetComponent<CharacterSelect>();
+        }
+        else if (MenuManager.GetComponent<MenuManager>().playerCount == 2)
+        {
+            CharSelectP1 = GameObject.Find("Player(Clone) 1").GetComponent<CharacterSelect>();
+            CharSelectP2 = GameObject.Find("Player(Clone) 2").GetComponent<CharacterSelect>();
+        }
+        else if (MenuManager.GetComponent<MenuManager>().playerCount == 3)
+        {
+            CharSelectP3 = GameObject.Find("Player(Clone) 3").GetComponent<CharacterSelect>();
+        }
+        else if (MenuManager.GetComponent<MenuManager>().playerCount == 4)
+        {
+            CharSelectP4 = GameObject.Find("Player(Clone) 4").GetComponent<CharacterSelect>();
+        }*/
+
+        CharSelectP1 = GameObject.Find("Player(Clone) 1").GetComponent<CharacterSelect>();
+        CharSelectP2 = GameObject.Find("Player(Clone) 2").GetComponent<CharacterSelect>();
+
+
+        if (GameController.GetComponent<SpawnPlayers>().playerCount == CharSelectP1.joyId)
+        {
+            
+            if (CharSelectP1.CharID == 0)
+            {
+                Lighty.SetActive(true);
+            }
+            else if (CharSelectP1.CharID == 1)
+            {
+                Lighty.SetActive(false);
+                Strongy.SetActive(true);
+            }
+            else if (CharSelectP1.CharID == 2)
+            {
+                Debug.Log("Swifty Selected");
+                Lighty.SetActive(false);
+                Speedy.SetActive(true);
+            }
+            else if (CharSelectP1.CharID == 3)
+            {
+                Lighty.SetActive(false);
+            }
+        }
+        else if (GameController.GetComponent<SpawnPlayers>().playerCount == CharSelectP2.joyId)
+        {
+            if(CharSelectP2.CharID == 0)
+            {
+                Lighty.SetActive(true);
+            }
+            else if (CharSelectP2.CharID == 1)
+            {
+                Lighty.SetActive(false);
+                Strongy.SetActive(true);
+            }
+            else if (CharSelectP2.CharID == 2)
+            {
+                Lighty.SetActive(false);
+            }
+            else if (CharSelectP1.CharID == 3)
+            {
+                Lighty.SetActive(false);
+            }
+        }
+
     }
 
     private void OnEnable()
@@ -103,7 +156,6 @@ public class PlayerController_Daniel : MonoBehaviour
                 velocity.y = Mathf.Sqrt((2f * -2f * gravity));
                 isGrounded = false;
                 hipsr.AddForce(new Vector3(0, 6000, 0));
-                Debug.LogWarning("Jump");
             }
         }
         

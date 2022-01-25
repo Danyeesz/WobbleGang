@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SpawnPlayers : MonoBehaviour
 {
+    public int playerCount;
+    public void PlayerJoined()
+    {
+        playerCount++;
+    }
     // Start is called before the first frame update
     void Start()
     {

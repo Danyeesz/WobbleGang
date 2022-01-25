@@ -232,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2377108496717363267, guid: 458703cc17561e043b56d8d2f6f8a9f8, type: 3}
       propertyPath: offset.y
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2377108496717363267, guid: 458703cc17561e043b56d8d2f6f8a9f8, type: 3}
       propertyPath: offset.z
@@ -240,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696475575978143875, guid: 458703cc17561e043b56d8d2f6f8a9f8, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5696475575978143875, guid: 458703cc17561e043b56d8d2f6f8a9f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -295,7 +295,6 @@ GameObject:
   - component: {fileID: 634126378}
   - component: {fileID: 634126377}
   - component: {fileID: 634126376}
-  - component: {fileID: 634126375}
   - component: {fileID: 634126374}
   - component: {fileID: 634126373}
   m_Layer: 7
@@ -334,22 +333,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &634126375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634126372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927068ebdcb7e314c8cec6eed073151c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spring: 500
-  _damper: 3
-  _jellyVertex: {fileID: 3790314136247859864, guid: a3968c748eacd9a4ba0173f2696189be, type: 3}
-  _springsOnTriangles: 0
 --- !u!23 &634126376
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -430,6 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e419db189f837b428e6ca21995afd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCount: 0
 --- !u!1 &670844531
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +489,6 @@ GameObject:
   - component: {fileID: 917623017}
   - component: {fileID: 917623016}
   - component: {fileID: 917623015}
-  - component: {fileID: 917623013}
   - component: {fileID: 917623012}
   - component: {fileID: 917623014}
   m_Layer: 7
@@ -531,22 +514,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &917623013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917623011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927068ebdcb7e314c8cec6eed073151c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spring: 500
-  _damper: 3
-  _jellyVertex: {fileID: 3790314136247859864, guid: a3968c748eacd9a4ba0173f2696189be, type: 3}
-  _springsOnTriangles: 0
 --- !u!65 &917623014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -634,7 +601,6 @@ GameObject:
   - component: {fileID: 1748254457}
   - component: {fileID: 1748254456}
   - component: {fileID: 1748254455}
-  - component: {fileID: 1748254454}
   - component: {fileID: 1748254453}
   - component: {fileID: 1748254452}
   m_Layer: 0
@@ -673,22 +639,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1748254454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748254451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927068ebdcb7e314c8cec6eed073151c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spring: 100
-  _damper: 10
-  _jellyVertex: {fileID: 3790314136247859864, guid: a3968c748eacd9a4ba0173f2696189be, type: 3}
-  _springsOnTriangles: 0
 --- !u!23 &1748254455
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -763,7 +713,6 @@ GameObject:
   - component: {fileID: 1851374835}
   - component: {fileID: 1851374834}
   - component: {fileID: 1851374833}
-  - component: {fileID: 1851374832}
   - component: {fileID: 1851374831}
   - component: {fileID: 1851374830}
   m_Layer: 7
@@ -802,22 +751,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1851374832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851374829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927068ebdcb7e314c8cec6eed073151c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spring: 500
-  _damper: 3
-  _jellyVertex: {fileID: 3790314136247859864, guid: a3968c748eacd9a4ba0173f2696189be, type: 3}
-  _springsOnTriangles: 0
 --- !u!23 &1851374833
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -892,7 +825,6 @@ GameObject:
   - component: {fileID: 2074582424}
   - component: {fileID: 2074582423}
   - component: {fileID: 2074582422}
-  - component: {fileID: 2074582425}
   - component: {fileID: 2074582426}
   - component: {fileID: 2074582421}
   m_Layer: 7
@@ -978,22 +910,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -24.082, y: 15.888, z: 25.768}
---- !u!114 &2074582425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074582420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927068ebdcb7e314c8cec6eed073151c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spring: 500
-  _damper: 3
-  _jellyVertex: {fileID: 3790314136247859864, guid: a3968c748eacd9a4ba0173f2696189be, type: 3}
-  _springsOnTriangles: 0
 --- !u!54 &2074582426
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1138,9 +1054,37 @@ PrefabInstance:
       propertyPath: m_JoinAction.m_Action.m_Name
       value: Join
       objectReference: {fileID: 0}
+    - target: {fileID: 839639521817748603, guid: 6d7a8836b73d1fb418a9ee5032d7a47e, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 839639521817748603, guid: 6d7a8836b73d1fb418a9ee5032d7a47e, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 839639521817748603, guid: 6d7a8836b73d1fb418a9ee5032d7a47e, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 658633449}
+    - target: {fileID: 839639521817748603, guid: 6d7a8836b73d1fb418a9ee5032d7a47e, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 839639521817748603, guid: 6d7a8836b73d1fb418a9ee5032d7a47e, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerJoined
+      objectReference: {fileID: 0}
+    - target: {fileID: 839639521817748603, guid: 6d7a8836b73d1fb418a9ee5032d7a47e, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpawnPlayers, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 839639521817748603, guid: 6d7a8836b73d1fb418a9ee5032d7a47e, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 839639521817748604, guid: 6d7a8836b73d1fb418a9ee5032d7a47e, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 839639521817748604, guid: 6d7a8836b73d1fb418a9ee5032d7a47e, type: 3}
       propertyPath: m_LocalPosition.x

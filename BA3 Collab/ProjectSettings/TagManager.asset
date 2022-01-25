@@ -7,6 +7,7 @@ TagManager:
   - BombSpawner
   - Bomb
   - Object
+  - CharSelect
   layers:
   - Default
   - TransparentFX
