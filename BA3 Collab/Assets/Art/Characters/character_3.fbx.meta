@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 22d9d6e099e7ab346920026ab507513e
+guid: afb82bdacc7fcc84fa70052d957c7542
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -4630289742519671138
-    second: Armature.004|Pose char 3
+      74: -6068913475735182785
+    second: Armature.004|char3_drowning
   - first:
       74: 3364584496027042152
     second: Armature.004|running char3
@@ -29,7 +29,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -94,13 +94,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 

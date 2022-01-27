@@ -4,6 +4,12 @@ ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
+      74: 7350560177026871932
+    second: Armature.001|char_2_drowning_2
+  - first:
+      74: 4879325600797265469
+    second: Armature.001|char_2_drowning_2.2
+  - first:
       74: -4294880269842032579
     second: Armature.001|Pose char2
   - first:
@@ -29,7 +35,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -94,13 +100,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
