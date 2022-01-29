@@ -10,7 +10,7 @@ public class BouncingWall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponent<Rigidbody>()!=null)
+        if(collision.gameObject.GetComponent<Rigidbody>()!=null && (collision.gameObject.tag=="Player" ||collision.gameObject.tag == "Bomb" || collision.gameObject.tag == "Object"))
         {
             //sort by distance
             
