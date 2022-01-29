@@ -24,7 +24,8 @@ public class MenuManager : MonoBehaviour
         {
             if (sceneLoaded == false)
             {
-                SceneManager.LoadScene("Level1_Daniel");
+
+                SceneManager.LoadScene("Level_220128");
                 sceneLoaded = true;
             }
             

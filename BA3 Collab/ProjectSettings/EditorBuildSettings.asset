@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Daniel/Scenes/Level1_Daniel.unity
     guid: dd6b1019f7d669d4387a38a9eacae423
+  - enabled: 1
+    path: Assets/Common/Level_220128.unity
+    guid: 3b4b0d8f4fbd74bee901e56ecaf9fda7
   m_configObjects: {}

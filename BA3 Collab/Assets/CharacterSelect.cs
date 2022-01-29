@@ -43,11 +43,15 @@ public class CharacterSelect : MonoBehaviour
         MenuManager = GameObject.Find("MenuManager");
         NumberOfPlayers = MenuManager.GetComponent<MenuManager>().playerCount;
         DontDestroyOnLoad(this.gameObject);
-       
+
+        
+      
+
         PlayerCount.GetComponent<TextMeshProUGUI>().text = "Player " + NumberOfPlayers.ToString();
         if (NumberOfPlayers == 1)
         {
-            joyId = 1;
+            joyId = Gamepad.all[0].deviceId;
+            Debug.Log(joyId);
             CharTeamSelect.position = player1pos.transform.position;
             gameObject.name = gameObject.name + " 1";
             player1pos.GetComponent<Image>().enabled = false;
@@ -56,7 +60,8 @@ public class CharacterSelect : MonoBehaviour
         }
         else if (NumberOfPlayers == 2)
         {
-            joyId = 2;
+            joyId = Gamepad.all[1].deviceId;
+            Debug.Log(joyId);
             CharTeamSelect.position = player2pos.transform.position;
             gameObject.name = gameObject.name + " 2";
             player2pos.GetComponent<Image>().enabled = false;
@@ -84,8 +89,8 @@ public class CharacterSelect : MonoBehaviour
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P4";
 
         }
-       
 
+        
     }
 
     public void TeamRight(InputAction.CallbackContext value) 
@@ -129,7 +134,6 @@ public class CharacterSelect : MonoBehaviour
             }
             CharImage.sprite = CharSprites[spriteIndex];
             CharID = spriteIndex;
-            Debug.Log(CharID);
         }
     }
 

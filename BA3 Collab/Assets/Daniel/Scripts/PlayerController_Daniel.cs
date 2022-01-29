@@ -20,8 +20,6 @@ public class PlayerController_Daniel : MonoBehaviour
     Transform armature;
     Transform hips;
     public Transform grabPos;
-    Rigidbody rightHand;
-    Rigidbody leftHand;
     Rigidbody hipsr;
     bool walk = false;
     public Animator _animatedAnimator;
@@ -39,6 +37,7 @@ public class PlayerController_Daniel : MonoBehaviour
     CharacterSelect CharSelectP2;
     CharacterSelect CharSelectP3;
     CharacterSelect CharSelectP4;
+    GameObject GrabbedObject;
 
 
 
@@ -53,7 +52,7 @@ public class PlayerController_Daniel : MonoBehaviour
         MenuManager = GameObject.Find("MenuManager");
         GameController = GameObject.Find("GameController");
         
-       /* if (MenuManager.GetComponent<MenuManager>().playerCount == 1)
+       if (MenuManager.GetComponent<MenuManager>().playerCount == 1)
         {
             CharSelectP1 = GameObject.Find("Player(Clone) 1").GetComponent<CharacterSelect>();
         }
@@ -69,15 +68,16 @@ public class PlayerController_Daniel : MonoBehaviour
         else if (MenuManager.GetComponent<MenuManager>().playerCount == 4)
         {
             CharSelectP4 = GameObject.Find("Player(Clone) 4").GetComponent<CharacterSelect>();
-        }*/
-
-        CharSelectP1 = GameObject.Find("Player(Clone) 1").GetComponent<CharacterSelect>();
-        CharSelectP2 = GameObject.Find("Player(Clone) 2").GetComponent<CharacterSelect>();
+        }
+        
 
 
-        if (GameController.GetComponent<SpawnPlayers>().playerCount == CharSelectP1.joyId)
+       
+      
+
+        if (Gamepad.all[0].deviceId == CharSelectP1.joyId)
         {
-            
+            Debug.Log(Gamepad.all[0].deviceId);
             if (CharSelectP1.CharID == 0)
             {
                 Lighty.SetActive(true);
@@ -98,9 +98,10 @@ public class PlayerController_Daniel : MonoBehaviour
                 Lighty.SetActive(false);
             }
         }
-        else if (GameController.GetComponent<SpawnPlayers>().playerCount == CharSelectP2.joyId)
+        else if (Gamepad.all[0].deviceId == CharSelectP2.joyId)
         {
-            if(CharSelectP2.CharID == 0)
+            Debug.Log(Gamepad.all[0].deviceId);
+            if (CharSelectP2.CharID == 0)
             {
                 Lighty.SetActive(true);
             }
@@ -168,7 +169,7 @@ public class PlayerController_Daniel : MonoBehaviour
             canGrab = Physics.CheckSphere(grabPos.transform.position, 2f, objects);
             if (canGrab == true)
             {
-                Collider[] r_colliders = Physics.OverlapSphere(grabPos.transform.position, 2f, objects);
+                Collider[] r_colliders = Physics.OverlapSphere(grabPos.transform.position, 0.5f, objects);
                 foreach (Collider coll in r_colliders)
                 {
                     if (coll.GetComponent<Grenade>() != null)
@@ -178,35 +179,25 @@ public class PlayerController_Daniel : MonoBehaviour
                     coll.gameObject.AddComponent<FixedJoint>();
                     coll.GetComponent<FixedJoint>().connectedBody = hipsr;
                     toGrab = coll.gameObject;
-                    coll.transform.position = new Vector3(grabPos.position.x, grabPos.position.y, grabPos.position.z);
-
+                    coll.transform.position = grabPos.position;
+                    GrabbedObject = coll.gameObject;
                 }
             }
         }
         else if (value.canceled)
         {
-            canGrab = false;
+            canGrab = true;
             UnGrab();
-
         }
         
 
     }
 
     void UnGrab() 
-    {  
-            
-            Collider[] r_colliders = Physics.OverlapSphere(grabPos.transform.position, 0.5f, objects);
-            foreach (Collider coll in r_colliders)
-            {
-            if (coll.transform.GetComponent<FixedJoint>().connectedBody == null)
-            {
-                Destroy(coll.transform.GetComponent<FixedJoint>());
-            }
-                Destroy(coll.transform.GetComponent<FixedJoint>());
+    {
 
-            }
-            toGrab = null;
+        Destroy(GrabbedObject.GetComponent<FixedJoint>());
+        toGrab = null;
     }
 
 
