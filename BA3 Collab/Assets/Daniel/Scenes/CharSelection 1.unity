@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.1727681, g: 0.21589199, b: 0.29782572, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13689,7 +13689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1950991361
 Transform:
   m_ObjectHideFlags: 0
@@ -14745,6 +14745,7 @@ MonoBehaviour:
   playersReady: 2
   CharSelectionCam: {fileID: 1251024576}
   InGameCam: {fileID: 1264912296}
+  GameStarted: 0
 --- !u!4 &2111063880
 Transform:
   m_ObjectHideFlags: 0
