@@ -33,10 +33,7 @@ public class PlayerController_Daniel : MonoBehaviour
     public GameObject Breaky;
     GameObject MenuManager;
     GameObject GameController;
-    CharacterSelect CharSelectP1;
-    CharacterSelect CharSelectP2;
-    CharacterSelect CharSelectP3;
-    CharacterSelect CharSelectP4;
+    CharacterSelect CharSelect;
     GameObject GrabbedObject;
 
 
@@ -49,75 +46,25 @@ public class PlayerController_Daniel : MonoBehaviour
         hipsr = hips.GetComponent<Rigidbody>();
         _animatedTorso =  _animatedAnimator.GetBoneTransform(HumanBodyBones.Hips);
         _physicalTorso = _physicalAnimator.GetBoneTransform(HumanBodyBones.Hips);
-        MenuManager = GameObject.Find("MenuManager");
-        GameController = GameObject.Find("GameController");
-        
-       if (MenuManager.GetComponent<MenuManager>().playerCount == 1)
-        {
-            CharSelectP1 = GameObject.Find("Player(Clone) 1").GetComponent<CharacterSelect>();
-        }
-        else if (MenuManager.GetComponent<MenuManager>().playerCount == 2)
-        {
-            CharSelectP1 = GameObject.Find("Player(Clone) 1").GetComponent<CharacterSelect>();
-            CharSelectP2 = GameObject.Find("Player(Clone) 2").GetComponent<CharacterSelect>();
-        }
-        else if (MenuManager.GetComponent<MenuManager>().playerCount == 3)
-        {
-            CharSelectP3 = GameObject.Find("Player(Clone) 3").GetComponent<CharacterSelect>();
-        }
-        else if (MenuManager.GetComponent<MenuManager>().playerCount == 4)
-        {
-            CharSelectP4 = GameObject.Find("Player(Clone) 4").GetComponent<CharacterSelect>();
-        }
-        
+        CharSelect = gameObject.GetComponentInParent<CharacterSelect>();
 
-
-       
-      
-
-        if (Gamepad.all[0].deviceId == CharSelectP1.joyId)
+        if (CharSelect.CharID == 0)
         {
-            Debug.Log(Gamepad.all[0].deviceId);
-            if (CharSelectP1.CharID == 0)
-            {
-                Lighty.SetActive(true);
-            }
-            else if (CharSelectP1.CharID == 1)
-            {
-                Lighty.SetActive(false);
-                Strongy.SetActive(true);
-            }
-            else if (CharSelectP1.CharID == 2)
-            {
-                Debug.Log("Swifty Selected");
-                Lighty.SetActive(false);
-                Speedy.SetActive(true);
-            }
-            else if (CharSelectP1.CharID == 3)
-            {
-                Lighty.SetActive(false);
-            }
+            Lighty.SetActive(true);
         }
-        else if (Gamepad.all[0].deviceId == CharSelectP2.joyId)
+        else if (CharSelect.CharID == 1)
         {
-            Debug.Log(Gamepad.all[0].deviceId);
-            if (CharSelectP2.CharID == 0)
-            {
-                Lighty.SetActive(true);
-            }
-            else if (CharSelectP2.CharID == 1)
-            {
-                Lighty.SetActive(false);
-                Strongy.SetActive(true);
-            }
-            else if (CharSelectP2.CharID == 2)
-            {
-                Lighty.SetActive(false);
-            }
-            else if (CharSelectP1.CharID == 3)
-            {
-                Lighty.SetActive(false);
-            }
+            Lighty.SetActive(false);
+            Strongy.SetActive(true);
+        }
+        else if (CharSelect.CharID == 2)
+        {
+            Lighty.SetActive(false);
+            Speedy.SetActive(true);
+        }
+        else if (CharSelect.CharID == 3)
+        {
+            Lighty.SetActive(false);
         }
 
     }

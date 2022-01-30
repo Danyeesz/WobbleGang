@@ -8,13 +8,12 @@ public class MenuManager : MonoBehaviour
 {
     public int playerCount;
     public int playersReady;
-    bool sceneLoaded;
+    public GameObject CharSelectionCam;
+    public GameObject InGameCam;
 
     // Start is called before the first frame update
     void Start()
-    {
-        DontDestroyOnLoad(this.gameObject);
-       
+    {  
     }
 
     // Update is called once per frame
@@ -22,15 +21,10 @@ public class MenuManager : MonoBehaviour
     {
         if (playersReady == playerCount)
         {
-            if (sceneLoaded == false)
-            {
-
-                SceneManager.LoadScene("Level_220128");
-                sceneLoaded = true;
-            }
-            
-            gameObject.GetComponent<PlayerInputManager>().enabled = false;
-            
+            Debug.Log("Alma");
+            InGameCam.SetActive(true);
+            CharSelectionCam.SetActive(false);
+            playersReady++;
         }
     }
 

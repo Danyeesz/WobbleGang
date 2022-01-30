@@ -11,7 +11,7 @@ public class CharacterSelect : MonoBehaviour
 {
     
     PlayerControls control;
-    public Transform canvas;
+    GameObject canvas;
     public Transform PlayerCount;
     public int NumberOfPlayers;
     public Transform CharTeamSelect;
@@ -23,7 +23,6 @@ public class CharacterSelect : MonoBehaviour
     int spriteIndex;
     int TeamIndex;
     public GameObject ReadyText;
-    public int joyId;
     public int CharID = 0;
     GameObject player1pos;
     GameObject player2pos;
@@ -34,24 +33,19 @@ public class CharacterSelect : MonoBehaviour
 
     private void Awake()
     {
+        canvas = GameObject.Find("CharacterSelection");
         player1pos = GameObject.Find("Player1pos");
         player2pos = GameObject.Find("Player2pos");
         player3pos = GameObject.Find("Player3pos");
         player4pos = GameObject.Find("Player4pos");
 
         control = new PlayerControls();
-        MenuManager = GameObject.Find("MenuManager");
+        MenuManager = GameObject.Find("GameManager");
         NumberOfPlayers = MenuManager.GetComponent<MenuManager>().playerCount;
         DontDestroyOnLoad(this.gameObject);
 
-        
-      
-
-        PlayerCount.GetComponent<TextMeshProUGUI>().text = "Player " + NumberOfPlayers.ToString();
         if (NumberOfPlayers == 1)
         {
-            joyId = Gamepad.all[0].deviceId;
-            Debug.Log(joyId);
             CharTeamSelect.position = player1pos.transform.position;
             gameObject.name = gameObject.name + " 1";
             player1pos.GetComponent<Image>().enabled = false;
@@ -60,8 +54,6 @@ public class CharacterSelect : MonoBehaviour
         }
         else if (NumberOfPlayers == 2)
         {
-            joyId = Gamepad.all[1].deviceId;
-            Debug.Log(joyId);
             CharTeamSelect.position = player2pos.transform.position;
             gameObject.name = gameObject.name + " 2";
             player2pos.GetComponent<Image>().enabled = false;
@@ -71,23 +63,19 @@ public class CharacterSelect : MonoBehaviour
         }
         else if (NumberOfPlayers == 3)
         {
-            joyId = 3;
             CharTeamSelect.position = player3pos.transform.position;
             gameObject.name = gameObject.name + " 3";
             player3pos.GetComponent<Image>().enabled = false;
             TeamColor.sprite = TeamSprites[0];
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P3";
-
         }
         else if (NumberOfPlayers == 4)
         {
-            joyId = 4;
             CharTeamSelect.position = player4pos.transform.position;
             gameObject.name = gameObject.name + " 4";
             player4pos.GetComponent<Image>().enabled = false;
             TeamColor.sprite = TeamSprites[0];
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P4";
-
         }
 
         
@@ -157,12 +145,10 @@ public class CharacterSelect : MonoBehaviour
         if (value.performed)
         {
             ReadyText.SetActive(true);
-            gameObject.GetComponent<PlayerInput>().enabled = false;
-            canvas.GetComponent<Canvas>().enabled = false;
+            canvas.SetActive(false);
             MenuManager.GetComponent<MenuManager>().playersReady--;
+            gameObject.GetComponent<PlayerInput>().SwitchCurrentActionMap("Movement");
         }
-      
-       
     }
 
     private void OnEnable()
