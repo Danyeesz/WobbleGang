@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18154702, g: 0.22719009, b: 0.30740646, a: 1}
+  m_IndirectSpecularColor: {r: 0.18154676, g: 0.22718975, b: 0.30740586, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -177,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9125189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.0128, z: 0.0125}
+  m_LocalPosition: {x: 0, y: -0.0128, z: 0.0059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 506569705}
@@ -2571,6 +2571,7 @@ GameObject:
   - component: {fileID: 1320378410}
   - component: {fileID: 1320378409}
   - component: {fileID: 1320378408}
+  - component: {fileID: 1320378413}
   m_Layer: 0
   m_Name: squareobstacle_lp (1)
   m_TagString: Untagged
@@ -2688,6 +2689,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1320378413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320378407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927068ebdcb7e314c8cec6eed073151c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spring: 0
+  _damper: 0
+  _jellyVertex: {fileID: 0}
+  _springsOnTriangles: 0
 --- !u!1 &1320793343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,6 +3177,7 @@ GameObject:
   - component: {fileID: 1715713526}
   - component: {fileID: 1715713525}
   - component: {fileID: 1715713524}
+  - component: {fileID: 1715713529}
   m_Layer: 0
   m_Name: squareobstacle_lp (2)
   m_TagString: Untagged
@@ -3274,6 +3292,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1715713529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715713523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927068ebdcb7e314c8cec6eed073151c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spring: 30
+  _damper: 30
+  _jellyVertex: {fileID: 3790314136247859864, guid: a3968c748eacd9a4ba0173f2696189be, type: 3}
+  _springsOnTriangles: 0
 --- !u!1 &1775172994
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,6 +4213,7 @@ GameObject:
   - component: {fileID: 3314442169536110242}
   - component: {fileID: 3963097198541537145}
   - component: {fileID: 3963097198541537144}
+  - component: {fileID: 3963097198541537146}
   m_Layer: 0
   m_Name: squareobstacle_lp
   m_TagString: Untagged
@@ -4225,6 +4260,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.021672338, y: 0.05873289, z: 0.032711618}
   m_Center: {x: -1.1649395e-16, y: 0, z: 0.016395062}
+--- !u!114 &3963097198541537146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963097198541537143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927068ebdcb7e314c8cec6eed073151c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spring: 0
+  _damper: 0
+  _jellyVertex: {fileID: 0}
+  _springsOnTriangles: 0
 --- !u!4 &4446301100099347917
 Transform:
   m_ObjectHideFlags: 0
