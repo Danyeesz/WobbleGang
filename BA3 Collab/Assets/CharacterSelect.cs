@@ -9,26 +9,30 @@ using TMPro;
 
 public class CharacterSelect : MonoBehaviour
 {
-    
-    PlayerControls control;
-    GameObject canvas;
-    public Transform PlayerCount;
+
     public int NumberOfPlayers;
+    int spriteIndex;
+    int TeamIndex;
+    public int CharID = 0;
+
+    PlayerControls control;
+    public Transform PlayerCount;
     public Transform CharTeamSelect;
     public TextMeshProUGUI TeamText;
     public Image TeamColor;
     public Image CharImage;
     public Sprite [] CharSprites;
     public Sprite [] TeamSprites;
-    int spriteIndex;
-    int TeamIndex;
+
+    GameObject canvas;
     public GameObject ReadyText;
-    public int CharID = 0;
     GameObject player1pos;
     GameObject player2pos;
     GameObject player3pos;
     GameObject player4pos;
     GameObject MenuManager;
+    public GameObject UI_InGame;
+    public GameObject UI_CharSelection;
    
 
     private void Awake()
@@ -147,7 +151,10 @@ public class CharacterSelect : MonoBehaviour
             ReadyText.SetActive(true);
             canvas.SetActive(false);
             MenuManager.GetComponent<MenuManager>().playersReady--;
+            UI_CharSelection.SetActive(false);
+            UI_InGame.SetActive(true);
             gameObject.GetComponent<PlayerInput>().SwitchCurrentActionMap("Movement");
+           
         }
     }
 
@@ -161,16 +168,7 @@ public class CharacterSelect : MonoBehaviour
         control.MenuControls.Disable();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
 
 }
