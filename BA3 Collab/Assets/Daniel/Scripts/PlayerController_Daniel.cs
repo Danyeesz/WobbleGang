@@ -8,6 +8,7 @@ public class PlayerController_Daniel : MonoBehaviour
 
     
     Vector2 move;
+    public int speed = 8000;
     public Vector3 velocity;
     float gravity = -9.81f;
     public bool isGrounded;
@@ -35,6 +36,7 @@ public class PlayerController_Daniel : MonoBehaviour
     GameObject GameController;
     CharacterSelect CharSelect;
     GameObject GrabbedObject;
+    GameObject GameManager;
 
 
 
@@ -47,26 +49,7 @@ public class PlayerController_Daniel : MonoBehaviour
         _animatedTorso =  _animatedAnimator.GetBoneTransform(HumanBodyBones.Hips);
         _physicalTorso = _physicalAnimator.GetBoneTransform(HumanBodyBones.Hips);
         CharSelect = gameObject.GetComponentInParent<CharacterSelect>();
-
-        if (CharSelect.CharID == 0)
-        {
-            Lighty.SetActive(true);
-        }
-        else if (CharSelect.CharID == 1)
-        {
-            Lighty.SetActive(false);
-            Strongy.SetActive(true);
-        }
-        else if (CharSelect.CharID == 2)
-        {
-            Lighty.SetActive(false);
-            Speedy.SetActive(true);
-        }
-        else if (CharSelect.CharID == 3)
-        {
-            Lighty.SetActive(false);
-        }
-
+        GameManager = MenuManager = GameObject.Find("GameManager");
     }
 
     private void OnEnable()
@@ -157,7 +140,7 @@ public class PlayerController_Daniel : MonoBehaviour
         if (direction.magnitude >= 0.1f) { 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
-            hipsr.AddForce(direction * 10000 *Time.deltaTime);
+            hipsr.AddForce(direction * speed *Time.deltaTime);
             walk = true;
         }
         else
@@ -169,6 +152,38 @@ public class PlayerController_Daniel : MonoBehaviour
         _animatedAnimator.transform.position = _physicalTorso.position
                                 + (_animatedAnimator.transform.position - _animatedTorso.position);
         _animatedAnimator.transform.rotation = _physicalTorso.rotation;
-                               
+
+
+        if (CharSelect.CharID == 0)
+        {
+            Lighty.SetActive(true);
+            Strongy.SetActive(false);
+            Speedy.SetActive(false);
+            Breaky.SetActive(false);
+        }
+        else if (CharSelect.CharID == 1)
+        {
+            Strongy.SetActive(true);
+            Lighty.SetActive(false);
+            Speedy.SetActive(false);
+            Breaky.SetActive(false);
+        }
+        else if (CharSelect.CharID == 2)
+        {
+            Speedy.SetActive(true);
+            Strongy.SetActive(false);
+            Lighty.SetActive(false);
+            Breaky.SetActive(false);
+        }
+        else if (CharSelect.CharID == 3)
+        {
+            Breaky.SetActive(false);
+            Speedy.SetActive(false);
+            Strongy.SetActive(false);
+            Lighty.SetActive(false);
+            
+        }
+
+
     }
 }

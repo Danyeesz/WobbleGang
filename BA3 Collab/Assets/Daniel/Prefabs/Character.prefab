@@ -2419,6 +2419,10 @@ MonoBehaviour:
   _animatedAnimator: {fileID: 0}
   _physicalAnimator: {fileID: 0}
   toGrab: {fileID: 0}
+  Lighty: {fileID: 0}
+  Strongy: {fileID: 0}
+  Speedy: {fileID: 0}
+  Breaky: {fileID: 0}
 --- !u!114 &1265977743262607259
 MonoBehaviour:
   m_ObjectHideFlags: 0

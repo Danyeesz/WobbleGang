@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     public int playersReady;
     public GameObject CharSelectionCam;
     public GameObject InGameCam;
+    public bool GameStarted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,7 @@ public class MenuManager : MonoBehaviour
     {
         if (playersReady == playerCount)
         {
-            Debug.Log("Alma");
+            GameStarted = true;
             InGameCam.SetActive(true);
             CharSelectionCam.SetActive(false);
             playersReady++;
