@@ -55,22 +55,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Punch"",
+                    ""name"": ""Special"",
                     ""type"": ""Button"",
-                    ""id"": ""167cfa0c-654d-4076-b00a-15288f938f18"",
+                    ""id"": ""b6122bc2-beb3-40de-8ad0-d8610703ee9e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Value"",
-                    ""id"": ""b6122bc2-beb3-40de-8ad0-d8610703ee9e"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -93,17 +84,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Grab"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fce18a9f-760f-407e-a4f2-7cc8b39af219"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Punch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -174,14 +154,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""79abb53d-168d-436d-83f1-3f7194f03717"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""105eab1c-f60c-4e57-a9f1-adcdbc213e34"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": true,
+                    ""action"": ""Special"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
@@ -314,8 +294,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Movement_Walk = m_Movement.FindAction("Walk", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
         m_Movement_Grab = m_Movement.FindAction("Grab", throwIfNotFound: true);
-        m_Movement_Punch = m_Movement.FindAction("Punch", throwIfNotFound: true);
-        m_Movement_Newaction = m_Movement.FindAction("New action", throwIfNotFound: true);
+        m_Movement_Special = m_Movement.FindAction("Special", throwIfNotFound: true);
         // MenuControls
         m_MenuControls = asset.FindActionMap("MenuControls", throwIfNotFound: true);
         m_MenuControls_MoveLeft = m_MenuControls.FindAction("MoveLeft", throwIfNotFound: true);
@@ -385,8 +364,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Walk;
     private readonly InputAction m_Movement_Jump;
     private readonly InputAction m_Movement_Grab;
-    private readonly InputAction m_Movement_Punch;
-    private readonly InputAction m_Movement_Newaction;
+    private readonly InputAction m_Movement_Special;
     public struct MovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -394,8 +372,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Walk => m_Wrapper.m_Movement_Walk;
         public InputAction @Jump => m_Wrapper.m_Movement_Jump;
         public InputAction @Grab => m_Wrapper.m_Movement_Grab;
-        public InputAction @Punch => m_Wrapper.m_Movement_Punch;
-        public InputAction @Newaction => m_Wrapper.m_Movement_Newaction;
+        public InputAction @Special => m_Wrapper.m_Movement_Special;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -414,12 +391,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Grab.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnGrab;
                 @Grab.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnGrab;
                 @Grab.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnGrab;
-                @Punch.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnPunch;
-                @Punch.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnPunch;
-                @Punch.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnPunch;
-                @Newaction.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnNewaction;
+                @Special.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnSpecial;
+                @Special.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnSpecial;
+                @Special.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnSpecial;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -433,12 +407,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Grab.started += instance.OnGrab;
                 @Grab.performed += instance.OnGrab;
                 @Grab.canceled += instance.OnGrab;
-                @Punch.started += instance.OnPunch;
-                @Punch.performed += instance.OnPunch;
-                @Punch.canceled += instance.OnPunch;
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Special.started += instance.OnSpecial;
+                @Special.performed += instance.OnSpecial;
+                @Special.canceled += instance.OnSpecial;
             }
         }
     }
@@ -522,8 +493,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnWalk(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnGrab(InputAction.CallbackContext context);
-        void OnPunch(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnSpecial(InputAction.CallbackContext context);
     }
     public interface IMenuControlsActions
     {

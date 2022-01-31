@@ -8,7 +8,6 @@ public class PlayerController_Daniel : MonoBehaviour
 
     
     Vector2 move;
-    public int speed = 8000;
     public Vector3 velocity;
     float gravity = -9.81f;
     public bool isGrounded;
@@ -16,7 +15,6 @@ public class PlayerController_Daniel : MonoBehaviour
     public GameObject groundC;
     public LayerMask ground;
     public LayerMask objects;
-    CharacterController player;
     PlayerControls control;
     Transform armature;
     Transform hips;
@@ -140,7 +138,7 @@ public class PlayerController_Daniel : MonoBehaviour
         if (direction.magnitude >= 0.1f) { 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
-            hipsr.AddForce(direction * speed *Time.deltaTime);
+            hipsr.AddForce(direction * 10000 *Time.deltaTime);
             walk = true;
         }
         else
@@ -177,7 +175,7 @@ public class PlayerController_Daniel : MonoBehaviour
         }
         else if (CharSelect.CharID == 3)
         {
-            Breaky.SetActive(false);
+            Breaky.SetActive(true);
             Speedy.SetActive(false);
             Strongy.SetActive(false);
             Lighty.SetActive(false);
