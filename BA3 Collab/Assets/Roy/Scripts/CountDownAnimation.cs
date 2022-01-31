@@ -10,6 +10,7 @@ public class CountDownAnimation : MonoBehaviour
     public void StartGame() 
     {
         timerEnded = true;
+        this.enabled = false;
     }
 
     private void Start()
