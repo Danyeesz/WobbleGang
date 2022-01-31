@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-    public float delayTime=12;
+    public float delayTime=9;
     float countdown;
     public bool isActivated=false;
     bool isExploded=false;
     public GameObject explosionEffect;
     public float exlosionRadius;
+
+    // automatic blast after 9 sec, no activation needed. first 6 sec normal, 7-9 flicker.. blow up at 9. 
     private void Start()
     {
         isActivated = true;
