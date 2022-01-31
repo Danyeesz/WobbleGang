@@ -10,6 +10,10 @@ public class CountDownAnimation : MonoBehaviour
     public void StartGame() 
     {
         timerEnded = true;
+        if (FindObjectOfType<BombManager>() != null) 
+        {
+            FindObjectOfType<BombManager>().startSpawn = true;
+        }
         gameObject.SetActive(false);
     }
 

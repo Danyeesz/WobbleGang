@@ -9,7 +9,7 @@ public class BombManager : MonoBehaviour
     float countdown=12f;
     public GameObject bomb;
     public BombSpawnPoint[] bombSpawnPoints;
-    bool startSpawn;
+    public bool startSpawn;
     void Start()
     {
         startSpawn = false;
@@ -20,18 +20,7 @@ public class BombManager : MonoBehaviour
  
     void Update()
     {
-        if (startSpawn == false)
-        {
-            if (FindObjectOfType<CountDownAnimation>() !=  null)
-            {
-                if (FindObjectOfType<CountDownAnimation>().timerEnded == true)
-                {
-                    startSpawn = true;
-                }
-            }
-           
-        }
-        else
+        if (startSpawn == true)
         {
             countdown -= Time.deltaTime;
             if (countdown <= 0)
