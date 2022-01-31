@@ -14,6 +14,10 @@ public class CountDownAnimation : MonoBehaviour
         {
             FindObjectOfType<BombManager>().startSpawn = true;
         }
+        if (FindObjectOfType<BombPipeSpawner>() != null)
+        {
+            FindObjectOfType<BombPipeSpawner>().startSpawning = true;
+        }
         gameObject.SetActive(false);
     }
 
