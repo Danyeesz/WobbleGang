@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-    public float delayTime;
+    public float delayTime=12;
     float countdown;
     public bool isActivated=false;
     bool isExploded=false;
@@ -12,6 +12,7 @@ public class Grenade : MonoBehaviour
     public float exlosionRadius;
     private void Start()
     {
+        isActivated = true;
         countdown = delayTime;
     }
 

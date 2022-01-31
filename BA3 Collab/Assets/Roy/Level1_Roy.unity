@@ -458,7 +458,7 @@ MeshCollider:
   m_GameObject: {fileID: 140939029}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -1405,7 +1405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742380112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.98, y: 1.04, z: -8.9222145}
+  m_LocalPosition: {x: -6.98, y: 1.04, z: -3.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3015,7 +3015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320378407}
   m_LocalRotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
-  m_LocalPosition: {x: -1.79, y: -0, z: -2.8}
+  m_LocalPosition: {x: 8.53, y: 0, z: -2.8}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 1807114055}
@@ -4761,6 +4761,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 604376782092197650, guid: cc0b0992780625642adc0c9b692e157d, type: 3}
+      propertyPath: maxDistance
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 604376782092197651, guid: cc0b0992780625642adc0c9b692e157d, type: 3}
       propertyPath: m_Name
       value: SpawnerMover
@@ -4900,7 +4904,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3963097198541537143}
   m_LocalRotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
-  m_LocalPosition: {x: -1.79, y: 0, z: -14.46}
+  m_LocalPosition: {x: 2.8, y: 0, z: -14.46}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 597047867}
