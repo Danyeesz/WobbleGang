@@ -3906,6 +3906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d8ac1a49cb7b44c9b75a4f0820e703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerEnded: 0
 --- !u!1001 &457453777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12259,6 +12260,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5842357538331356788, guid: fc50e16d3078df040b087fb73d68bf64, type: 3}
+      propertyPath: spawnInterval
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5842357538331356789, guid: fc50e16d3078df040b087fb73d68bf64, type: 3}
       propertyPath: m_RootOrder
       value: 7
