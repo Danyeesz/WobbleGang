@@ -35,6 +35,7 @@ public class PlayerController_Daniel : MonoBehaviour
     CharacterSelect CharSelect;
     GameObject GrabbedObject;
     GameObject GameManager;
+    int speed = 2500;
 
 
 
@@ -90,6 +91,8 @@ public class PlayerController_Daniel : MonoBehaviour
         
 
     }
+
+    
     public void Grab(InputAction.CallbackContext value)
     {
         if (value.performed)
@@ -109,6 +112,7 @@ public class PlayerController_Daniel : MonoBehaviour
                     toGrab = coll.gameObject;
                     coll.transform.position = grabPos.position;
                     GrabbedObject = coll.gameObject;
+                    Debug.Log(GrabbedObject);
                 }
             }
         }
@@ -123,9 +127,21 @@ public class PlayerController_Daniel : MonoBehaviour
 
     void UnGrab() 
     {
-
         Destroy(GrabbedObject.GetComponent<FixedJoint>());
         toGrab = null;
+    }
+
+    public void Special(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            speed = 10000;
+        }
+        else if (value.canceled)
+        {
+            speed = 2500;
+        }
+        
     }
 
 
@@ -138,7 +154,7 @@ public class PlayerController_Daniel : MonoBehaviour
         if (direction.magnitude >= 0.1f) { 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
-            hipsr.AddForce(direction * 10000 *Time.deltaTime);
+            hipsr.velocity = direction * speed* Time.deltaTime;
             walk = true;
         }
         else
