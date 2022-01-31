@@ -33,22 +33,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Punch",
+                    "name": "Special",
                     "type": "Button",
-                    "id": "167cfa0c-654d-4076-b00a-15288f938f18",
+                    "id": "b6122bc2-beb3-40de-8ad0-d8610703ee9e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "New action",
-                    "type": "Value",
-                    "id": "b6122bc2-beb3-40de-8ad0-d8610703ee9e",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -71,17 +62,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Grab",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fce18a9f-760f-407e-a4f2-7cc8b39af219",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -152,14 +132,14 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "79abb53d-168d-436d-83f1-3f7194f03717",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "105eab1c-f60c-4e57-a9f1-adcdbc213e34",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
-                    "isComposite": true,
+                    "action": "Special",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]

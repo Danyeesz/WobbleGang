@@ -19,10 +19,15 @@ public class CharacterSelect : MonoBehaviour
     public Transform PlayerCount;
     public Transform CharTeamSelect;
     public TextMeshProUGUI TeamText;
-    public Image TeamColor;
-    public Image CharImage;
-    public Sprite [] CharSprites;
-    public Sprite [] TeamSprites;
+    public Image CharSelect_TeamColor;
+    public Image CharSelect_CharImage;
+    public Image InGame_TeamColor;
+    public Image InGame_CharImage;
+    public Sprite [] CharSelect_CharSprites;
+    public Sprite [] CharSelect_TeamSprites;
+    public Sprite[] InGame_CharSprites;
+    public Sprite[] InGame_TeamSprites;
+
 
     GameObject canvas;
     public GameObject ReadyText;
@@ -53,16 +58,20 @@ public class CharacterSelect : MonoBehaviour
             CharTeamSelect.position = player1pos.transform.position;
             gameObject.name = gameObject.name + " 1";
             player1pos.GetComponent<Image>().enabled = false;
-            TeamColor.sprite = TeamSprites[0];
+            CharSelect_TeamColor.sprite = CharSelect_TeamSprites[0];
+            InGame_TeamColor.sprite = InGame_TeamSprites[0];
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P1";
+            UI_InGame.transform.position = GameObject.Find("InGame1pos").transform.position;
+
         }
         else if (NumberOfPlayers == 2)
         {
             CharTeamSelect.position = player2pos.transform.position;
             gameObject.name = gameObject.name + " 2";
             player2pos.GetComponent<Image>().enabled = false;
-            TeamColor.sprite = TeamSprites[0];
+            CharSelect_TeamColor.sprite = CharSelect_TeamSprites[0];
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P2";
+            UI_InGame.transform.position = GameObject.Find("InGame2pos").transform.position;
 
         }
         else if (NumberOfPlayers == 3)
@@ -70,16 +79,18 @@ public class CharacterSelect : MonoBehaviour
             CharTeamSelect.position = player3pos.transform.position;
             gameObject.name = gameObject.name + " 3";
             player3pos.GetComponent<Image>().enabled = false;
-            TeamColor.sprite = TeamSprites[0];
+            CharSelect_TeamColor.sprite = CharSelect_TeamSprites[0];
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P3";
+            UI_InGame.transform.position = GameObject.Find("InGame3pos").transform.position;
         }
         else if (NumberOfPlayers == 4)
         {
             CharTeamSelect.position = player4pos.transform.position;
             gameObject.name = gameObject.name + " 4";
             player4pos.GetComponent<Image>().enabled = false;
-            TeamColor.sprite = TeamSprites[0];
+            CharSelect_TeamColor.sprite = CharSelect_TeamSprites[0];
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P4";
+            UI_InGame.transform.position = GameObject.Find("InGame4pos").transform.position;
         }
 
         
@@ -90,14 +101,14 @@ public class CharacterSelect : MonoBehaviour
         if (value.performed)
         {
             TeamIndex++;
-            if (TeamIndex > TeamSprites.Length-1)
+            if (TeamIndex > CharSelect_TeamSprites.Length-1)
             {
                 TeamIndex = 0;
               
             }
-            TeamColor.sprite = TeamSprites[TeamIndex];
-      
-           
+            CharSelect_TeamColor.sprite = CharSelect_TeamSprites[TeamIndex];
+            InGame_TeamColor.sprite = InGame_TeamSprites[TeamIndex];
+
         }
     }
 
@@ -108,10 +119,13 @@ public class CharacterSelect : MonoBehaviour
             TeamIndex--;
             if (TeamIndex < 0)
             {
-                TeamIndex = TeamSprites.Length - 1;
+                TeamIndex = CharSelect_TeamSprites.Length - 1;
             }
-            TeamColor.sprite = TeamSprites[TeamIndex];
-            
+            CharSelect_TeamColor.sprite = CharSelect_TeamSprites[TeamIndex];
+            InGame_TeamColor.sprite = InGame_TeamSprites[TeamIndex];
+
+
+
         }
     }
 
@@ -120,11 +134,12 @@ public class CharacterSelect : MonoBehaviour
         if (value.performed)
         {
             spriteIndex++;
-            if (spriteIndex > CharSprites.Length-1)
+            if (spriteIndex > CharSelect_CharSprites.Length-1)
             {
                 spriteIndex = 0; 
             }
-            CharImage.sprite = CharSprites[spriteIndex];
+            CharSelect_CharImage.sprite = CharSelect_CharSprites[spriteIndex];
+            InGame_CharImage.sprite = InGame_CharSprites[spriteIndex];
             CharID = spriteIndex;
         }
     }
@@ -136,11 +151,11 @@ public class CharacterSelect : MonoBehaviour
             spriteIndex--;
             if (spriteIndex < 0)
             {
-                spriteIndex = CharSprites.Length-1;
+                spriteIndex = CharSelect_CharSprites.Length-1;
             }
-            CharImage.sprite = CharSprites[spriteIndex];
+            CharSelect_CharImage.sprite = CharSelect_CharSprites[spriteIndex];
+            InGame_CharImage.sprite = InGame_CharSprites[spriteIndex];
             CharID = spriteIndex;
-            Debug.Log(CharID);
         }
     }
 
