@@ -13,7 +13,27 @@ public class CharacterSelect : MonoBehaviour
     public int NumberOfPlayers;
     int spriteIndex;
     int TeamIndex;
-    public int CharID = 0;
+    private int charID;
+    public int CharID
+    {
+        get { return charID; }
+        set
+        {
+            if (charID != value)
+            {
+                charID = value;
+
+                /*
+                foreach (Transform child in characterCOntainer)
+                    Destroy(child);
+
+                Instantiate(currentSelection);
+                */
+
+               
+            }
+        }
+    }
 
     PlayerControls control;
     public Transform PlayerCount;
@@ -28,6 +48,10 @@ public class CharacterSelect : MonoBehaviour
     public Sprite[] InGame_CharSprites;
     public Sprite[] InGame_TeamSprites;
 
+    public GameObject Lighty;
+    public GameObject Strongy;
+    public GameObject Speedy;
+    public GameObject Breaky;
 
     GameObject canvas;
     public GameObject ReadyText;
@@ -94,6 +118,48 @@ public class CharacterSelect : MonoBehaviour
         }
 
         
+    }
+
+    public void Update()
+    {
+
+        /*
+        if (currentCharacter != currentSelection)        
+        {
+            
+        }
+            
+         * */
+
+        if (CharID == 0)
+        {
+            Lighty.SetActive(true);
+            Strongy.SetActive(false);
+            Speedy.SetActive(false);
+            Breaky.SetActive(false);
+        }
+        else if (CharID == 1)
+        {
+            Strongy.SetActive(true);
+            Lighty.SetActive(false);
+            Speedy.SetActive(false);
+            Breaky.SetActive(false);
+        }
+        else if (CharID == 2)
+        {
+            Speedy.SetActive(true);
+            Strongy.SetActive(false);
+            Lighty.SetActive(false);
+            Breaky.SetActive(false);
+        }
+        else if (CharID == 3)
+        {
+            Breaky.SetActive(true);
+            Speedy.SetActive(false);
+            Strongy.SetActive(false);
+            Lighty.SetActive(false);
+
+        }
     }
 
     public void TeamRight(InputAction.CallbackContext value) 
