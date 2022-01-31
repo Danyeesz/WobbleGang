@@ -26,41 +26,23 @@ public class PlayerController_Daniel : MonoBehaviour
     Transform _animatedTorso;
     Transform _physicalTorso;
     public GameObject toGrab;
-    public GameObject Lighty;
-    public GameObject Strongy;
-    public GameObject Speedy;
-    public GameObject Breaky;
-    GameObject MenuManager;
-    GameObject GameController;
     CharacterSelect CharSelect;
     GameObject GrabbedObject;
-    GameObject GameManager;
-    int speed = 2500;
+    public int speed = 2500;
 
 
 
     void Awake()
     {
-        control = new PlayerControls();
         armature = transform.GetChild(0);
         hips = armature.GetChild(0);
+        Debug.Log(hips);
         hipsr = hips.GetComponent<Rigidbody>();
         _animatedTorso =  _animatedAnimator.GetBoneTransform(HumanBodyBones.Hips);
         _physicalTorso = _physicalAnimator.GetBoneTransform(HumanBodyBones.Hips);
         CharSelect = gameObject.GetComponentInParent<CharacterSelect>();
-        GameManager = MenuManager = GameObject.Find("GameManager");
+      
     }
-
-    private void OnEnable()
-    {
-        control.Movement.Enable();
-    }
-
-    private void OnDisable()
-    {
-        control.Movement.Disable();
-    }
-
     public void Walk(InputAction.CallbackContext value)
     {
 
@@ -71,8 +53,7 @@ public class PlayerController_Daniel : MonoBehaviour
         }
         else if (value.canceled)
         {
-            move = Vector2.zero;
-            
+            move = Vector2.zero;  
         }
 
     }
@@ -112,12 +93,14 @@ public class PlayerController_Daniel : MonoBehaviour
                     toGrab = coll.gameObject;
                     coll.transform.position = grabPos.position;
                     GrabbedObject = coll.gameObject;
-                    Debug.Log(GrabbedObject);
+                   
+
                 }
             }
         }
         else if (value.canceled)
         {
+            
             canGrab = true;
             UnGrab();
         }
@@ -127,15 +110,35 @@ public class PlayerController_Daniel : MonoBehaviour
 
     void UnGrab() 
     {
-        Destroy(GrabbedObject.GetComponent<FixedJoint>());
+        Debug.Log(GrabbedObject);
+        if(GrabbedObject)
+            Destroy(GrabbedObject.GetComponent<FixedJoint>());
         toGrab = null;
     }
 
     public void Special(InputAction.CallbackContext value)
     {
+        Debug.Log(CharSelect.CharID);
         if (value.performed)
         {
-            speed = 10000;
+            if (CharSelect.CharID==0)
+            {
+                speed = 10000;
+
+            }
+            else if(CharSelect.CharID == 1)
+            {
+
+            }
+            else if (CharSelect.CharID == 2)
+            {
+                speed = 10000;
+            }
+            else if (CharSelect.CharID == 3)
+            {
+                speed = 3000;
+            }
+            
         }
         else if (value.canceled)
         {
@@ -162,42 +165,8 @@ public class PlayerController_Daniel : MonoBehaviour
             walk = false;
         }
         _animatedAnimator.SetBool("Walk", walk);
-
-        _animatedAnimator.transform.position = _physicalTorso.position
-                                + (_animatedAnimator.transform.position - _animatedTorso.position);
+        _animatedAnimator.transform.position = _physicalTorso.position+ (_animatedAnimator.transform.position - _animatedTorso.position);
         _animatedAnimator.transform.rotation = _physicalTorso.rotation;
-
-
-        if (CharSelect.CharID == 0)
-        {
-            Lighty.SetActive(true);
-            Strongy.SetActive(false);
-            Speedy.SetActive(false);
-            Breaky.SetActive(false);
-        }
-        else if (CharSelect.CharID == 1)
-        {
-            Strongy.SetActive(true);
-            Lighty.SetActive(false);
-            Speedy.SetActive(false);
-            Breaky.SetActive(false);
-        }
-        else if (CharSelect.CharID == 2)
-        {
-            Speedy.SetActive(true);
-            Strongy.SetActive(false);
-            Lighty.SetActive(false);
-            Breaky.SetActive(false);
-        }
-        else if (CharSelect.CharID == 3)
-        {
-            Breaky.SetActive(true);
-            Speedy.SetActive(false);
-            Strongy.SetActive(false);
-            Lighty.SetActive(false);
-            
-        }
-
 
     }
 }
