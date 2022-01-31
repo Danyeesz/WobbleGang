@@ -9,8 +9,10 @@ public class BombManager : MonoBehaviour
     float countdown=12f;
     public GameObject bomb;
     public BombSpawnPoint[] bombSpawnPoints;
+    public bool startSpawn;
     void Start()
     {
+        startSpawn = false;
         bombSpawnPoints = FindObjectsOfType<BombSpawnPoint>();
         countdown = spawnInterval;
     }
@@ -18,11 +20,14 @@ public class BombManager : MonoBehaviour
  
     void Update()
     {
-        countdown -= Time.deltaTime;
-        if (countdown <= 0) 
+        if (startSpawn == true)
         {
-            SpawnBomb();
-            countdown = spawnInterval;
+            countdown -= Time.deltaTime;
+            if (countdown <= 0)
+            {
+                SpawnBomb();
+                countdown = spawnInterval;
+            }
         }
     }
 

@@ -9526,7 +9526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 922572574185782248, guid: d4015cd25dcc6489cb2d521551286949, type: 3}
       propertyPath: reflectionForce
-      value: 1500
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4985232011335806333, guid: d4015cd25dcc6489cb2d521551286949, type: 3}
@@ -26221,6 +26221,10 @@ PrefabInstance:
     - target: {fileID: 684864265231328641, guid: d4015cd25dcc6489cb2d521551286949, type: 3}
       propertyPath: m_Name
       value: roundobstacle_lowpoly (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 922572574185782248, guid: d4015cd25dcc6489cb2d521551286949, type: 3}
+      propertyPath: reflectionForce
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4015cd25dcc6489cb2d521551286949, type: 3}

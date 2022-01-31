@@ -20,7 +20,7 @@ public class PlayerController_Daniel : MonoBehaviour
     Transform hips;
     public Transform grabPos;
     Rigidbody hipsr;
-    bool walk = false;
+    public bool walk = false;
     public Animator _animatedAnimator;
     public Animator _physicalAnimator;
     Transform _animatedTorso;

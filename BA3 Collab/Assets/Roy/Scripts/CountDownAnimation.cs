@@ -1,29 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 
 
 public class CountDownAnimation : MonoBehaviour
 {
+    public bool timerEnded;
     public void StartGame() 
     {
-        PlayerInput[] playerInputs = FindObjectsOfType<PlayerInput>();
-
-        for (int i = 0; i < playerInputs.Length; i++)
+        timerEnded = true;
+        if (FindObjectOfType<BombManager>() != null) 
         {
-            playerInputs[i].enabled = true;
+            FindObjectOfType<BombManager>().startSpawn = true;
         }
+        gameObject.SetActive(false);
     }
 
     private void Start()
     {
-        PlayerInput[] playerInputs = FindObjectsOfType<PlayerInput>();
-       
-        for (int i = 0; i < playerInputs.Length; i++) 
-        {
-            playerInputs[i].enabled = false;
-        }
+        timerEnded = false;
 
     }
 }
