@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a176514d1954c2d4097797b6883812bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reflectionForce: 1300
+  reflectionForce: 700
   reflectors:
   - {fileID: 2607188580342021972}
   - {fileID: 4968053494341448284}

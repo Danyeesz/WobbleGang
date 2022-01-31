@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     public GameObject CharSelectionCam;
     public GameObject InGameCam;
     public bool GameStarted = false;
+    public GameObject CountDown;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,10 @@ public class MenuManager : MonoBehaviour
             GameStarted = true;
             InGameCam.SetActive(true);
             CharSelectionCam.SetActive(false);
+            CountDown.SetActive(true);
             playersReady++;
+
+           
         }
     }
 

@@ -22,10 +22,14 @@ public class BombManager : MonoBehaviour
     {
         if (startSpawn == false)
         {
-            if (FindObjectOfType<CountDownAnimation>().timerEnded == true)
+            if (FindObjectOfType<CountDownAnimation>() !=  null)
             {
-                startSpawn = true;
+                if (FindObjectOfType<CountDownAnimation>().timerEnded == true)
+                {
+                    startSpawn = true;
+                }
             }
+           
         }
         else
         {
