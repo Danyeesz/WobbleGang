@@ -6,7 +6,7 @@ public class BombManager : MonoBehaviour
 {
     public int totalBomb=3;
     public float spawnInterval;
-    float countdown=5f;
+    float countdown=12f;
     public GameObject bomb;
     public BombSpawnPoint[] bombSpawnPoints;
     void Start()

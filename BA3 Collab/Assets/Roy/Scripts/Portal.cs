@@ -6,7 +6,7 @@ public class Portal : MonoBehaviour
 {
     public Transform target;
     public float portalRadious=1f;
-    public float pushForce = 30000;
+    public float pushForce = 600;
    
     
     private void OnTriggerEnter(Collider other)
@@ -19,10 +19,10 @@ public class Portal : MonoBehaviour
                 other.transform.position = target.position;
                 other.transform.rotation = target.rotation;
                
-                if (other.GetComponent<Riggedbody>() != null)
+                if (other.GetComponent<Rigidbody>() != null)
                 {
                     other.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                    other.GetComponent<Rigidbody>().AddForce(transform.forward*pushForce, ForceMode.Impulse);
+                    other.GetComponent<Rigidbody>().AddForce(target.forward*pushForce, ForceMode.Impulse);
                 }
             }
         }
