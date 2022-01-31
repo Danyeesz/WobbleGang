@@ -8,6 +8,7 @@ TagManager:
   - Bomb
   - Object
   - CharSelect
+  - Brick
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Camera
   - Bomb
   - PostProcess
-  - 
+  - Brick
   - 
   - 
   - 
