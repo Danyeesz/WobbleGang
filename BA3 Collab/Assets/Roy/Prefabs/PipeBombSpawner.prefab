@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f9298b8d83b63469421b08cd5f0ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomb: {fileID: 5212663973319755569, guid: 8a889577642408649aa3431a872557e1, type: 3}
+  bomb: {fileID: 5212663973319755569, guid: 09e116cd4e370472382115aec1af1421, type: 3}
   startSpawning: 0
   spawnInterval: 2
   fireRateInverse: 0.5

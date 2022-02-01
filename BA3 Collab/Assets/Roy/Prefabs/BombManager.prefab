@@ -45,5 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalBomb: 3
   spawnInterval: 12
-  bomb: {fileID: 5212663973319755569, guid: 8a889577642408649aa3431a872557e1, type: 3}
+  bomb: {fileID: 5212663973319755569, guid: 09e116cd4e370472382115aec1af1421, type: 3}
   bombSpawnPoints: []
+  startSpawn: 0
