@@ -3183,7 +3183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d8ac1a49cb7b44c9b75a4f0820e703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerEnded: 0
+  timerEnded: 1
 --- !u!1001 &454033611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8574,7 +8574,7 @@ PrefabInstance:
       objectReference: {fileID: 5212663973319755569, guid: 09e116cd4e370472382115aec1af1421, type: 3}
     - target: {fileID: 6551085045383109247, guid: cc184f7760165ff46adeef1318bb72c0, type: 3}
       propertyPath: pushForce
-      value: 20
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc184f7760165ff46adeef1318bb72c0, type: 3}
