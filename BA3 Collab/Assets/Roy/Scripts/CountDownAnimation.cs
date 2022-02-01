@@ -19,6 +19,12 @@ public class CountDownAnimation : MonoBehaviour
             FindObjectOfType<BombPipeSpawner>().startSpawning = true;
         }
         gameObject.SetActive(false);
+        
+        PlayerController_Daniel [] players = FindObjectsOfType<PlayerController_Daniel>();
+        foreach (var item in players)
+        {
+            item.enabled = true;
+        }
     }
 
     private void Start()
