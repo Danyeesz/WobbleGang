@@ -74,7 +74,7 @@ public class CameraWithBounds : MonoBehaviour
         {
             bounds.Encapsulate(players[i].transform.position);
         }
-        return bounds.size.x;
+        return bounds.size.z;
     }
     Vector3 GetCenterPosition() 
     { 
