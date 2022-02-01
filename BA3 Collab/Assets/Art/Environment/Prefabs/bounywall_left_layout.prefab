@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reflectionForce: 700
+  bounceSound: {fileID: 6105908196425713781, guid: b5b203f11d88a94418272da3803a1282, type: 3}
   reflectors:
   - {fileID: 947683879237895936}
   - {fileID: 2094621273996526198}

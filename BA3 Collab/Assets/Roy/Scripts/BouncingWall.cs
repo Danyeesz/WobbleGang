@@ -5,18 +5,21 @@ using UnityEngine;
 public class BouncingWall : MonoBehaviour
 {
     public float reflectionForce = 20000f;
-
+    public GameObject bounceSound;
     public Transform[] reflectors;
+
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.GetComponent<Rigidbody>()!=null && (collision.gameObject.tag=="Player" ||collision.gameObject.tag == "Bomb" || collision.gameObject.tag == "Object"))
         {
-            //sort by distance
+            
             
             Vector3 direction = NearestReflector(collision.gameObject.transform.position).forward;
-            //collision.gameObject.GetComponent<Rigidbody>().AddForce(direction * reflectionForce, ForceMode.VelocityChange);
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(direction*reflectionForce,ForceMode.Impulse);
+            Instantiate(bounceSound, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(direction * reflectionForce, ForceMode.Impulse);
+
+
         }
     }
 

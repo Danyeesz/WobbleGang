@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6760728395430464904
+--- !u!1 &6105908196425713781
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6760728395430464902}
-  - component: {fileID: 6760728395430464905}
-  - component: {fileID: 3455227732496622997}
+  - component: {fileID: 6105908196425713787}
+  - component: {fileID: 6105908196425713780}
+  - component: {fileID: 2782392035302465640}
   m_Layer: 0
-  m_Name: ExplosionSound
+  m_Name: BounceWallSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6760728395430464902
+--- !u!4 &6105908196425713787
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6760728395430464904}
+  m_GameObject: {fileID: 6105908196425713781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.56, y: 3.6596744, z: -2.3490949}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,17 +32,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &6760728395430464905
+--- !u!82 &6105908196425713780
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6760728395430464904}
+  m_GameObject: {fileID: 6105908196425713781}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b7fa4228219dc493b8f7776f270fe0fe, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8916f9cb322aa4226b53afef31ed9bad, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -128,13 +128,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3455227732496622997
+--- !u!114 &2782392035302465640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6760728395430464904}
+  m_GameObject: {fileID: 6105908196425713781}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59491420cc90e9048b6879de2252a9ae, type: 3}
