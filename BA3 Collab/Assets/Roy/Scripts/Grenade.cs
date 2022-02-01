@@ -10,20 +10,12 @@ public class Grenade : MonoBehaviour
     bool isExploded=false;
     public GameObject explosionEffect;
     public float exlosionRadius;
-    public float explosionForce = 50f;
-    public GameObject flickerLight;
 
     // automatic blast after 9 sec, no activation needed. first 6 sec normal, 7-9 flicker.. blow up at 9. 
-
-    public float flickeringTime;
-    public float flickeringRateInverse=.25f;
-    bool isFlickering = false;
     private void Start()
     {
         isActivated = true;
-        isFlickering = false;
         countdown = delayTime;
-        flickerLight.SetActive(false);
     }
 
     private void Update()
@@ -31,18 +23,10 @@ public class Grenade : MonoBehaviour
         if (isActivated) 
         {
             countdown -= Time.deltaTime;
-            if (countdown <= flickeringTime)
+            if (countdown <= 0 && !isExploded) 
             {
-                if (!isFlickering) 
-                {
-                    isFlickering = true;
-                    StartCoroutine(Flicker());
-                }
-                if (countdown <= 0 && !isExploded)
-                {
-                    Explode();
-                    isExploded = true;
-                }
+                Explode();
+                isExploded = true;
             }
         }
     }
@@ -68,43 +52,7 @@ public class Grenade : MonoBehaviour
             {
                 collider.GetComponent<BoxDestroyable>().GetHit();
             }
-
-            Rigidbody rb = collider.GetComponent<Rigidbody>();
-            if (rb != null) 
-            {
-                rb.AddExplosionForce(explosionForce,transform.position,exlosionRadius);
-            }
         }
     
-    }
-    IEnumerator Flicker() 
-    {
-        flickerLight.SetActive(true);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(false);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(true);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(false);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(true);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(false);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(true);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(false);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(true);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(false);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(true);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(false);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(true);
-        yield return new WaitForSeconds(flickeringRateInverse);
-        flickerLight.SetActive(false);
     }
 }
