@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void Play()
+    public void LoadNewGame()
     {
         StartCoroutine(delayForLoadingScene());
     }
@@ -16,4 +16,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("CharSelection 1");
 
     }
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
 }
