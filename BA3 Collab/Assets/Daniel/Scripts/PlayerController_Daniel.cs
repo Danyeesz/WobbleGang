@@ -23,8 +23,8 @@ public class PlayerController_Daniel : MonoBehaviour
     public bool walk = false;
     public Animator _animatedAnimator;
     public Animator _physicalAnimator;
-    Transform _animatedTorso;
-    Transform _physicalTorso;
+    public  Transform _animatedTorso;
+    public Transform _physicalTorso;
     public GameObject toGrab;
     CharacterSelect CharSelect;
     GameObject GrabbedObject;
@@ -167,6 +167,8 @@ public class PlayerController_Daniel : MonoBehaviour
         _animatedAnimator.SetBool("Walk", walk);
         _animatedAnimator.transform.position = _physicalTorso.position+ (_animatedAnimator.transform.position - _animatedTorso.position);
         _animatedAnimator.transform.rotation = _physicalTorso.rotation;
+
+      
 
     }
 }
