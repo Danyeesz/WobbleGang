@@ -7,6 +7,13 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("CharSelection 1");    
+        StartCoroutine(delayForLoadingScene());
+    }
+
+    IEnumerator delayForLoadingScene() 
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("CharSelection 1");
+
     }
 }
