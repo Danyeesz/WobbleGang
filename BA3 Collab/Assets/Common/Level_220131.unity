@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.1727681, g: 0.21589199, b: 0.29782572, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7852566242302200275, guid: 47215d1e9c3b3425888789576080cf84, type: 3}
       propertyPath: reflectionForce
-      value: 1300
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47215d1e9c3b3425888789576080cf84, type: 3}
@@ -4014,6 +4014,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148942548}
     m_Modifications:
+    - target: {fileID: 3269296471947181048, guid: 67c240bec3b334f78a1e7274c6c7cf19, type: 3}
+      propertyPath: reflectionForce
+      value: 700
+      objectReference: {fileID: 0}
     - target: {fileID: 6071531902098408584, guid: 67c240bec3b334f78a1e7274c6c7cf19, type: 3}
       propertyPath: m_Name
       value: bounywall_middle_layout
@@ -4073,7 +4077,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 770141759686703767, guid: d15c275ee52414b81a59637c770d3f53, type: 3}
       propertyPath: reflectionForce
-      value: 1300
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 5995797042210914641, guid: d15c275ee52414b81a59637c770d3f53, type: 3}
       propertyPath: m_Name
@@ -18675,7 +18679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7852566242302200275, guid: 47215d1e9c3b3425888789576080cf84, type: 3}
       propertyPath: reflectionForce
-      value: 1300
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47215d1e9c3b3425888789576080cf84, type: 3}
@@ -18812,6 +18816,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1570875292}
     m_Modifications:
+    - target: {fileID: 3269296471947181048, guid: 67c240bec3b334f78a1e7274c6c7cf19, type: 3}
+      propertyPath: reflectionForce
+      value: 700
+      objectReference: {fileID: 0}
     - target: {fileID: 6071531902098408584, guid: 67c240bec3b334f78a1e7274c6c7cf19, type: 3}
       propertyPath: m_Name
       value: bounywall_middle_layout
@@ -18940,7 +18948,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 770141759686703767, guid: d15c275ee52414b81a59637c770d3f53, type: 3}
       propertyPath: reflectionForce
-      value: 1300
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 5995797042210914641, guid: d15c275ee52414b81a59637c770d3f53, type: 3}
       propertyPath: m_Name
