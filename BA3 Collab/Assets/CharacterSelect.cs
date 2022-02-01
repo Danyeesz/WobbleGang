@@ -13,27 +13,8 @@ public class CharacterSelect : MonoBehaviour
     public int NumberOfPlayers;
     int spriteIndex;
     int TeamIndex;
-    private int charID;
-    public int CharID
-    {
-        get { return charID; }
-        set
-        {
-            if (charID != value)
-            {
-                charID = value;
-
-                /*
-                foreach (Transform child in characterCOntainer)
-                    Destroy(child);
-
-                Instantiate(currentSelection);
-                */
-
-               
-            }
-        }
-    }
+    public int CharID = 0;
+   
 
     PlayerControls control;
     public Transform PlayerCount;
@@ -122,44 +103,7 @@ public class CharacterSelect : MonoBehaviour
 
     public void Update()
     {
-
-        /*
-        if (currentCharacter != currentSelection)        
-        {
-            
-        }
-            
-         * */
-
-        if (CharID == 0)
-        {
-            Lighty.SetActive(true);
-            Strongy.SetActive(false);
-            Speedy.SetActive(false);
-            Breaky.SetActive(false);
-        }
-        else if (CharID == 1)
-        {
-            Strongy.SetActive(true);
-            Lighty.SetActive(false);
-            Speedy.SetActive(false);
-            Breaky.SetActive(false);
-        }
-        else if (CharID == 2)
-        {
-            Speedy.SetActive(true);
-            Strongy.SetActive(false);
-            Lighty.SetActive(false);
-            Breaky.SetActive(false);
-        }
-        else if (CharID == 3)
-        {
-            Breaky.SetActive(true);
-            Speedy.SetActive(false);
-            Strongy.SetActive(false);
-            Lighty.SetActive(false);
-
-        }
+  
     }
 
     public void TeamRight(InputAction.CallbackContext value) 
@@ -207,6 +151,7 @@ public class CharacterSelect : MonoBehaviour
             CharSelect_CharImage.sprite = CharSelect_CharSprites[spriteIndex];
             InGame_CharImage.sprite = InGame_CharSprites[spriteIndex];
             CharID = spriteIndex;
+           
         }
     }
 
@@ -235,7 +180,24 @@ public class CharacterSelect : MonoBehaviour
             UI_CharSelection.SetActive(false);
             UI_InGame.SetActive(true);
             gameObject.GetComponent<PlayerInput>().SwitchCurrentActionMap("Movement");
-           
+            Debug.Log(CharID);
+
+            if (CharID == 0)
+            {
+                Lighty.SetActive(true);
+            }
+            else if (CharID == 1)
+            {
+                Strongy.SetActive(true);
+            }
+            else if (CharID == 2)
+            {
+                Speedy.SetActive(true);
+            }
+            else if (CharID == 3)
+            {
+                Breaky.SetActive(true);
+            }
         }
     }
 

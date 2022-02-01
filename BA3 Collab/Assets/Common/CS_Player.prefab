@@ -752,6 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumberOfPlayers: 0
+  CharID: 0
   PlayerCount: {fileID: 5679778720238650567}
   CharTeamSelect: {fileID: 850767438573935235}
   TeamText: {fileID: 0}
@@ -827,7 +828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7023212511168391236
 Transform:
   m_ObjectHideFlags: 0
@@ -1732,7 +1733,7 @@ PrefabInstance:
       objectReference: {fileID: 3283295583292157188}
     - target: {fileID: 6570407022696813893, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6570407022696813893, guid: e54f80aaf49e8024ba206137d4ad6d47, type: 3}
       propertyPath: targetAnimator
@@ -1925,7 +1926,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 5595013918257391841}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51b474edea13a7045b761a1ab7d25e67, type: 3}
   m_Name: 
@@ -3291,7 +3292,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6075751660427805035}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51b474edea13a7045b761a1ab7d25e67, type: 3}
   m_Name: 
@@ -5423,7 +5424,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7067404037789335836}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51b474edea13a7045b761a1ab7d25e67, type: 3}
   m_Name: 
@@ -5541,7 +5542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4797958844920246932, guid: 2b4b063c0d7e11f40aa1424fbb58fd18, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4258411891960909470, guid: 2b4b063c0d7e11f40aa1424fbb58fd18, type: 3}
       propertyPath: m_Layer
@@ -7305,7 +7306,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8902848734751513655}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51b474edea13a7045b761a1ab7d25e67, type: 3}
   m_Name: 
@@ -7568,7 +7569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4797958844920246932, guid: 2b4b063c0d7e11f40aa1424fbb58fd18, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2b4b063c0d7e11f40aa1424fbb58fd18, type: 3}
       propertyPath: m_Name
