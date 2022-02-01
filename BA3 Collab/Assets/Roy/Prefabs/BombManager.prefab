@@ -48,3 +48,4 @@ MonoBehaviour:
   bomb: {fileID: 5212663973319755569, guid: 09e116cd4e370472382115aec1af1421, type: 3}
   bombSpawnPoints: []
   startSpawn: 0
+  dropSound: {fileID: 8094977392834028854, guid: 6b51ac0e340a09144bd4b944a8682d0e, type: 3}

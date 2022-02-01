@@ -11,6 +11,8 @@ public class BombPipeSpawner : MonoBehaviour
     public int maxAmountOfBombs;
     public int pushForce=300;
     float counter;
+
+    public GameObject dropSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,7 @@ public class BombPipeSpawner : MonoBehaviour
         if (bombs.Length < maxAmountOfBombs)
         {
             Instantiate(bomb, transform.position, transform.rotation).GetComponent<Rigidbody>().AddForce(transform.forward * pushForce, ForceMode.Impulse);
+            Instantiate(dropSound, transform.position, transform.rotation);
             StartCoroutine(Delay());
             SpawnBomb();
         }

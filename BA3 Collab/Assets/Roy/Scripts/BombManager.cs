@@ -10,6 +10,8 @@ public class BombManager : MonoBehaviour
     public GameObject bomb;
     public BombSpawnPoint[] bombSpawnPoints;
     public bool startSpawn;
+
+    public GameObject dropSound;
     void Start()
     {
         startSpawn = false;
@@ -55,7 +57,7 @@ public class BombManager : MonoBehaviour
                 if (bombs.Length < totalBomb) 
                 {
                     Instantiate(bomb, bombSpawnPoints[i].transform.position, bombSpawnPoints[i].transform.rotation);
-                    //bombSpawnPoints[i].isAvailable = false;
+                    Instantiate(dropSound, bombSpawnPoints[i].transform.position, bombSpawnPoints[i].transform.rotation);
                 }
             }
         }

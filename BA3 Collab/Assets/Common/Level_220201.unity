@@ -3034,7 +3034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &452816687
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11813,14 +11813,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5842357538331356788, guid: fc50e16d3078df040b087fb73d68bf64, type: 3}
-      propertyPath: bomb
-      value: 
-      objectReference: {fileID: 5212663973319755569, guid: 09e116cd4e370472382115aec1af1421, type: 3}
-    - target: {fileID: 5842357538331356788, guid: fc50e16d3078df040b087fb73d68bf64, type: 3}
-      propertyPath: spawnInterval
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5842357538331356789, guid: fc50e16d3078df040b087fb73d68bf64, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -18492,6 +18484,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 704785080050415498, guid: 9f3e55037a9a332438ddd15f07065018, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3761863494474103570, guid: 9f3e55037a9a332438ddd15f07065018, type: 3}
       propertyPath: m_RootOrder
       value: 11

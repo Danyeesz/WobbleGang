@@ -18,6 +18,8 @@ public class Grenade : MonoBehaviour
     public float flickeringTime;
     public float flickeringRateInverse = .25f;
     bool isFlickering = false;
+
+    public GameObject explosionSound;
     private void Start()
     {
         isActivated = true;
@@ -54,6 +56,7 @@ public class Grenade : MonoBehaviour
     void Explode()
     {
         Instantiate(explosionEffect, transform.position, transform.rotation);
+        Instantiate(explosionSound,transform.position,transform.rotation);
         GiveDamage();
         Destroy(gameObject);
     }

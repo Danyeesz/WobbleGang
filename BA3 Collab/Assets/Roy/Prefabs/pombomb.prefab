@@ -134,6 +134,7 @@ MonoBehaviour:
   flickerLight: {fileID: 7396119818765213698}
   flickeringTime: 3
   flickeringRateInverse: 0.25
+  explosionSound: {fileID: 6760728395430464904, guid: 5aa5024f931eab749bdebdd3887835a4, type: 3}
 --- !u!1 &7396119818765213698
 GameObject:
   m_ObjectHideFlags: 0
