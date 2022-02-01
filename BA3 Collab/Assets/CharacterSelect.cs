@@ -12,10 +12,9 @@ public class CharacterSelect : MonoBehaviour
 
     public int NumberOfPlayers;
     int spriteIndex;
-    int TeamIndex;
+    public int TeamIndex;
     public int CharID = 0;
    
-
     PlayerControls control;
     public Transform PlayerCount;
     public Transform CharTeamSelect;
@@ -67,6 +66,8 @@ public class CharacterSelect : MonoBehaviour
             InGame_TeamColor.sprite = InGame_TeamSprites[0];
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P1";
             UI_InGame.transform.position = GameObject.Find("InGame1pos").transform.position;
+            UI_InGame.GetComponentInChildren<TextMeshProUGUI>().text = "P1";
+
 
         }
         else if (NumberOfPlayers == 2)
@@ -77,6 +78,8 @@ public class CharacterSelect : MonoBehaviour
             CharSelect_TeamColor.sprite = CharSelect_TeamSprites[0];
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P2";
             UI_InGame.transform.position = GameObject.Find("InGame2pos").transform.position;
+            UI_InGame.GetComponentInChildren<TextMeshProUGUI>().text = "P2";
+
 
         }
         else if (NumberOfPlayers == 3)
@@ -87,6 +90,8 @@ public class CharacterSelect : MonoBehaviour
             CharSelect_TeamColor.sprite = CharSelect_TeamSprites[0];
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P3";
             UI_InGame.transform.position = GameObject.Find("InGame3pos").transform.position;
+            UI_InGame.GetComponentInChildren<TextMeshProUGUI>().text = "P3";
+
         }
         else if (NumberOfPlayers == 4)
         {
@@ -96,9 +101,11 @@ public class CharacterSelect : MonoBehaviour
             CharSelect_TeamColor.sprite = CharSelect_TeamSprites[0];
             PlayerCount.GetComponent<TextMeshProUGUI>().text = "P4";
             UI_InGame.transform.position = GameObject.Find("InGame4pos").transform.position;
+            UI_InGame.GetComponentInChildren<TextMeshProUGUI>().text = "P4";
+
         }
 
-        
+
     }
 
     public void Update()
@@ -180,7 +187,7 @@ public class CharacterSelect : MonoBehaviour
             UI_CharSelection.SetActive(false);
             UI_InGame.SetActive(true);
             gameObject.GetComponent<PlayerInput>().SwitchCurrentActionMap("Movement");
-            Debug.Log(CharID);
+          
 
             if (CharID == 0)
             {

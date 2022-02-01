@@ -24,7 +24,6 @@ public class CopyLimb : MonoBehaviour
 
     private void FixedUpdate() {
         this.m_ConfigurableJoint.targetRotation = copyRotation();
-        Debug.Log("Trying to copy Animations");
     }
 
     private Quaternion copyRotation() {

@@ -12,6 +12,8 @@ public class MenuManager : MonoBehaviour
     public GameObject InGameCam;
     public bool GameStarted = false;
     public GameObject CountDown;
+    public int RedPlayers;
+    public int BluePlayers;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +25,27 @@ public class MenuManager : MonoBehaviour
     {
         if (playersReady == playerCount)
         {
+            playersReady--;
             GameStarted = true;
             InGameCam.SetActive(true);
             CharSelectionCam.SetActive(false);
             CountDown.SetActive(true);
-            playersReady++;
-
+            PlayerController_Daniel[] players = FindObjectsOfType<PlayerController_Daniel>();
+            foreach (var item in players)
+            {
+                if (item.TeamLayer.layer == 13)
+                {
+                    Debug.Log(item.name);
+                    RedPlayers++;
+                }
+                else if (item.TeamLayer.layer == 14)
+                {
+                    BluePlayers++;
+                }
+            }
+            
+           
+           
            
         }
     }

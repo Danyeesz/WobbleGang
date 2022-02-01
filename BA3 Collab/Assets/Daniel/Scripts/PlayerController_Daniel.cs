@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class PlayerController_Daniel : MonoBehaviour
 {
@@ -9,13 +10,11 @@ public class PlayerController_Daniel : MonoBehaviour
     
     Vector2 move;
     public Vector3 velocity;
-    float gravity = -9.81f;
-    public bool isGrounded;
+    public bool Grounded;
     public bool canGrab;
     public GameObject groundC;
-    public LayerMask ground;
+    public LayerMask Ground;
     public LayerMask objects;
-    PlayerControls control;
     Transform armature;
     Transform hips;
     public Transform grabPos;
@@ -28,9 +27,8 @@ public class PlayerController_Daniel : MonoBehaviour
     public GameObject toGrab;
     CharacterSelect CharSelect;
     GameObject GrabbedObject;
-    public int speed = 1000;
-
-
+    public int speed;
+    public GameObject TeamLayer;
 
     void Awake()
     {
@@ -40,8 +38,36 @@ public class PlayerController_Daniel : MonoBehaviour
         hipsr = hips.GetComponent<Rigidbody>();
         _animatedTorso =  _animatedAnimator.GetBoneTransform(HumanBodyBones.Hips);
         _physicalTorso = _physicalAnimator.GetBoneTransform(HumanBodyBones.Hips);
-        CharSelect = gameObject.GetComponentInParent<CharacterSelect>();
-      
+        CharSelect = gameObject.GetComponentInParent<CharacterSelect>(); 
+        if (CharSelect.NumberOfPlayers == 1)
+        {
+            transform.position = GameObject.Find("Player1SpawnPos").transform.position;
+        }
+        else if (CharSelect.NumberOfPlayers == 2)
+        {
+            transform.position = GameObject.Find("Player2SpawnPos").transform.position;
+        }
+        else if (CharSelect.NumberOfPlayers == 3)
+        {
+            transform.position = GameObject.Find("Player3SpawnPos").transform.position;
+        }
+        else if (CharSelect.NumberOfPlayers == 4)
+        {
+            transform.position = GameObject.Find("Player4SpawnPos").transform.position;
+        }
+        if (CharSelect.TeamIndex == 1)
+        {
+            TeamLayer = gameObject.GetComponentsInChildren<Transform>().FirstOrDefault(c => c.gameObject.name == "lowerleg.R").gameObject;
+            TeamLayer.layer = 13;
+        }
+        else if (CharSelect.TeamIndex == 0)
+        {
+
+           TeamLayer = gameObject.GetComponentsInChildren<Transform>().FirstOrDefault(c => c.gameObject.name == "lowerleg.R").gameObject;
+            TeamLayer.layer = 14;
+        }
+
+
     }
     public void Walk(InputAction.CallbackContext value)
     {
@@ -49,30 +75,13 @@ public class PlayerController_Daniel : MonoBehaviour
         if (value.performed)
         {
             move = value.ReadValue<Vector2>();
-
         }
         else if (value.canceled)
         {
             move = Vector2.zero;  
         }
-
+       
     }
-
-    public void Jump(InputAction.CallbackContext value) 
-    {
-        if (value.performed)
-        {
-            if (isGrounded == true)
-            {
-                velocity.y = Mathf.Sqrt((2f * -2f * gravity));
-                isGrounded = false;
-                hipsr.AddForce(new Vector3(0, 6000, 0));
-            }
-        }
-        
-
-    }
-
     
     public void Grab(InputAction.CallbackContext value)
     {
@@ -100,7 +109,6 @@ public class PlayerController_Daniel : MonoBehaviour
         }
         else if (value.canceled)
         {
-            
             canGrab = true;
             UnGrab();
         }
@@ -123,7 +131,7 @@ public class PlayerController_Daniel : MonoBehaviour
         {
             if (CharSelect.CharID==0)
             {
-                speed = 10000;
+                speed = 1000;
 
             }
             else if(CharSelect.CharID == 1)
@@ -132,17 +140,17 @@ public class PlayerController_Daniel : MonoBehaviour
             }
             else if (CharSelect.CharID == 2)
             {
-                speed = 10000;
+                speed = 1000;
             }
             else if (CharSelect.CharID == 3)
             {
-                speed = 3000;
+                speed = 300;
             }
             
         }
         else if (value.canceled)
         {
-            speed = 2500;
+            speed = 600;
         }
         
     }
@@ -151,13 +159,17 @@ public class PlayerController_Daniel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundC.transform.position, 0.4f, ground);
+        Grounded = Physics.CheckSphere(groundC.transform.position, 1f, Ground);
+        if (!Grounded)
+        {
+            
+        }
 
         Vector3 direction = new Vector3(move.x, 0f, move.y);
         if (direction.magnitude >= 0.1f) { 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
-            hipsr.velocity = direction * speed* Time.deltaTime;
+            hipsr.velocity = (direction * speed)* Time.deltaTime;
             walk = true;
         }
         else
@@ -167,8 +179,6 @@ public class PlayerController_Daniel : MonoBehaviour
         _animatedAnimator.SetBool("Walk", walk);
         _animatedAnimator.transform.position = _physicalTorso.position+ (_animatedAnimator.transform.position - _animatedTorso.position);
         _animatedAnimator.transform.rotation = _physicalTorso.rotation;
-
-        
 
     }
 }

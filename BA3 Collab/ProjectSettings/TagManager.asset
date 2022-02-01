@@ -9,6 +9,7 @@ TagManager:
   - Object
   - CharSelect
   - Brick
+  - Leg
   layers:
   - Default
   - TransparentFX
@@ -22,9 +23,9 @@ TagManager:
   - Bomb
   - PostProcess
   - Brick
-  - 
-  - 
-  - 
+  - WinningZone
+  - RedTeam
+  - BlueTeam
   - 
   - 
   - 
