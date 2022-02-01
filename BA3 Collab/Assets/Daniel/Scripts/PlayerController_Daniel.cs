@@ -28,7 +28,7 @@ public class PlayerController_Daniel : MonoBehaviour
     public GameObject toGrab;
     CharacterSelect CharSelect;
     GameObject GrabbedObject;
-    public int speed = 2500;
+    public int speed = 1000;
 
 
 
@@ -168,7 +168,7 @@ public class PlayerController_Daniel : MonoBehaviour
         _animatedAnimator.transform.position = _physicalTorso.position+ (_animatedAnimator.transform.position - _animatedTorso.position);
         _animatedAnimator.transform.rotation = _physicalTorso.rotation;
 
-      
+        
 
     }
 }

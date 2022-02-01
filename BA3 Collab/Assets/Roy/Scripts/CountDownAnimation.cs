@@ -20,11 +20,11 @@ public class CountDownAnimation : MonoBehaviour
         }
         gameObject.SetActive(false);
         
-        PlayerController_Daniel [] players = FindObjectsOfType<PlayerController_Daniel>();
+       /* PlayerController_Daniel [] players = FindObjectsOfType<PlayerController_Daniel>();
         foreach (var item in players)
         {
             item.enabled = true;
-        }
+        }*/
     }
 
     private void Start()
