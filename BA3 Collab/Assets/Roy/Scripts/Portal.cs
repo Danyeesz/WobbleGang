@@ -17,7 +17,7 @@ public class Portal : MonoBehaviour
             if (distance > portalRadious)
             {
                 other.transform.position = target.position;
-                other.transform.rotation = target.rotation;
+                //other.transform.rotation = target.rotation;
                
                 if (other.GetComponent<Rigidbody>() != null)
                 {
