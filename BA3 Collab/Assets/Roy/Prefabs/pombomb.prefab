@@ -130,7 +130,7 @@ MonoBehaviour:
   isActivated: 1
   explosionEffect: {fileID: 2643731761973194939, guid: a7197705664f5b3489b297659df012c6, type: 3}
   exlosionRadius: 3
-  explosionForce: 500
+  explosionForce: 700
   flickerLight: {fileID: 7396119818765213698}
   flickeringTime: 3
   flickeringRateInverse: 0.25
