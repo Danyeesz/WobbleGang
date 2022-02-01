@@ -22,7 +22,11 @@ public class BoxDestroyable : MonoBehaviour
         {
             hitCount -= 1;
             GetComponent<MeshRenderer>().enabled = false;
-            if (brokenBox != null) brokenBox.SetActive(true);
+            if (brokenBox != null) 
+            {
+                brokenBox.SetActive(true);
+                brokenBox.GetComponent<MeshRenderer>().enabled = true;
+            }
             if (hitCount <= 0)
             {
                 destroyed = true;
