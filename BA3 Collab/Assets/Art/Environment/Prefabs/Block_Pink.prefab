@@ -206,4 +206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitCount: 2
   destroyParticle: {fileID: 6323494625444305009, guid: 6b32ea20aa0097e4e804d663cc49570a, type: 3}
+  crackingSound: {fileID: 9068611192055386076, guid: c6f14526d25d3594b8852dbd301698ed, type: 3}
+  crashingSound: {fileID: 7272670632718659105, guid: 79093731491d202478fe0a6463dc8e18, type: 3}
   brokenBox: {fileID: 31404880024517671}

@@ -8,6 +8,9 @@ public class BoxDestroyable : MonoBehaviour
     public ParticleSystem destroyParticle;
     bool destroyed = false;
 
+    public GameObject crackingSound;
+    public GameObject crashingSound;
+
    
     public GameObject brokenBox;
 
@@ -24,6 +27,7 @@ public class BoxDestroyable : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = false;
             if (brokenBox != null) 
             {
+                Instantiate(crackingSound, transform.position, transform.rotation);
                 brokenBox.SetActive(true);
                 brokenBox.GetComponent<MeshRenderer>().enabled = true;
             }
@@ -31,6 +35,7 @@ public class BoxDestroyable : MonoBehaviour
             {
                 destroyed = true;
                 if (brokenBox != null) brokenBox.SetActive(false);
+                Instantiate(crashingSound,transform.position,transform.rotation);
                 Instantiate(destroyParticle, transform.position, transform.rotation);
                 Destroy(gameObject);
 
