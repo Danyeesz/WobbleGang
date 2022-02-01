@@ -255,6 +255,7 @@ MonoBehaviour:
   target: {fileID: 0}
   portalRadious: 1.5
   pushForce: 20
+  teleportSound: {fileID: 2667789200293887346, guid: 546cf7335b62b31479d96821721f7393, type: 3}
 --- !u!136 &2489050182836043767
 CapsuleCollider:
   m_ObjectHideFlags: 0

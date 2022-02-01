@@ -7,6 +7,7 @@ public class Portal : MonoBehaviour
     public Transform target;
     public float portalRadious=1f;
     public float pushForce = 600;
+    public GameObject teleportSound;
    
     
     private void OnTriggerEnter(Collider other)
@@ -16,6 +17,7 @@ public class Portal : MonoBehaviour
             float distance = Vector3.Distance(other.transform.position, this.transform.position); ;
             if (distance > portalRadious)
             {
+                Instantiate(teleportSound,target.transform.position,target.transform.rotation);
                 other.transform.position = target.position;
                 //other.transform.rotation = target.rotation;
                
