@@ -128,4 +128,4 @@ MonoBehaviour:
   delayTime: 5
   isActivated: 1
   explosionEffect: {fileID: 2643731761973194939, guid: a7197705664f5b3489b297659df012c6, type: 3}
-  exlosionRadius: 4
+  exlosionRadius: 3
