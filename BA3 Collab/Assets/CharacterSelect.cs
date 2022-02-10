@@ -110,7 +110,11 @@ public class CharacterSelect : MonoBehaviour
 
     public void Update()
     {
-  
+        if (MenuManager.GetComponent<MenuManager>().GameStarted == true)
+        {
+            UI_CharSelection.SetActive(false);
+        }
+        
     }
 
     public void TeamRight(InputAction.CallbackContext value) 
@@ -181,10 +185,9 @@ public class CharacterSelect : MonoBehaviour
     {
         if (value.performed)
         {
+            Debug.Log(TeamIndex);
             ReadyText.SetActive(true);
-            canvas.SetActive(false);
-            MenuManager.GetComponent<MenuManager>().playersReady--;
-            UI_CharSelection.SetActive(false);
+            MenuManager.GetComponent<MenuManager>().playersReady++;
             UI_InGame.SetActive(true);
             gameObject.GetComponent<PlayerInput>().SwitchCurrentActionMap("Movement");
           

@@ -12,6 +12,7 @@ public class PlayerController_Daniel : MonoBehaviour
     public Vector3 velocity;
     public bool Grounded;
     public bool canGrab;
+    bool drown;
     public GameObject groundC;
     public LayerMask Ground;
     public LayerMask objects;
@@ -67,7 +68,6 @@ public class PlayerController_Daniel : MonoBehaviour
             TeamLayer.layer = 14;
         }
 
-
     }
     public void Walk(InputAction.CallbackContext value)
     {
@@ -102,8 +102,6 @@ public class PlayerController_Daniel : MonoBehaviour
                     toGrab = coll.gameObject;
                     coll.transform.position = grabPos.position;
                     GrabbedObject = coll.gameObject;
-                   
-
                 }
             }
         }
@@ -159,13 +157,21 @@ public class PlayerController_Daniel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
+
+        Vector3 direction = new Vector3(move.x, 0f, move.y);
         Grounded = Physics.CheckSphere(groundC.transform.position, 1f, Ground);
         if (!Grounded)
         {
-            
+            hipsr.velocity = new Vector3((direction.x * speed) * Time.deltaTime, -600 * Time.deltaTime, (direction.x * speed) * Time.deltaTime);
+            drown = true;
+        }
+        else
+        {
+            drown = false;
         }
 
-        Vector3 direction = new Vector3(move.x, 0f, move.y);
         if (direction.magnitude >= 0.1f) { 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             hipsr.GetComponent<ConfigurableJoint>().targetRotation = Quaternion.Euler(0f, 0f, -targetAngle);
@@ -176,6 +182,7 @@ public class PlayerController_Daniel : MonoBehaviour
         {
             walk = false;
         }
+        _animatedAnimator.SetBool("Drown", drown);
         _animatedAnimator.SetBool("Walk", walk);
         _animatedAnimator.transform.position = _physicalTorso.position+ (_animatedAnimator.transform.position - _animatedTorso.position);
         _animatedAnimator.transform.rotation = _physicalTorso.rotation;

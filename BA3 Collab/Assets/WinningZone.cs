@@ -57,14 +57,11 @@ public class WinningZone : MonoBehaviour
         }
         if (GameWon)
         {
-
+            Transform.FindObjectOfType<PlayerController_Daniel>().enabled = false;
+            
         }
        
     }
 
-    public void StopWinnigScreen()
-    {
-        RedWin.SetActive(false); 
-        BlueWin.SetActive(false);
-    }
+  
 }

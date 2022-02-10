@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     public int playersReady;
     public GameObject CharSelectionCam;
     public GameObject InGameCam;
+    public GameObject UI_CharSelection;
     public bool GameStarted = false;
     public GameObject CountDown;
     public int RedPlayers;
@@ -23,19 +24,19 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playersReady == playerCount)
+        if (playersReady == playerCount && playerCount != 0 && GameStarted==false)
         {
-            playersReady--;
+            
             GameStarted = true;
             InGameCam.SetActive(true);
             CharSelectionCam.SetActive(false);
+            UI_CharSelection.SetActive(false);
             CountDown.SetActive(true);
             PlayerController_Daniel[] players = FindObjectsOfType<PlayerController_Daniel>();
             foreach (var item in players)
             {
                 if (item.TeamLayer.layer == 13)
                 {
-                    Debug.Log(item.name);
                     RedPlayers++;
                 }
                 else if (item.TeamLayer.layer == 14)
